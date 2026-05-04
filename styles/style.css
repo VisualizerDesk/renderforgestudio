@@ -1,29 +1,132 @@
 /* =========================================
-   RENDERFORGE STUDIO - PORTAFOLIO JS FIX
+   RENDERFORGE STUDIO - FULL DESIGN SYSTEM
    ========================================= */
+:root {
+    --primary-orange: #ff4500; /* Naranja Lava para evitar comparaciones raras */
+    --dark-bg: #050505;
+    --card-bg: #111111;
+    --text-main: #ffffff;
+    --text-dim: #a0a0a0;
+    --font-tech: 'Orbitron', sans-serif;
+    --font-body: 'Outfit', sans-serif;
+}
 
-/* El contenedor que buscas en el JS con id="portfolio" */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* 1. HEADER & BANNER (Lo que estaba desnudo) */
+.main-header {
+    height: 450px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), var(--dark-bg)), 
+                url('../Images/RenderForgeStudio.png') center/cover no-repeat;
+    border-bottom: 3px solid var(--primary-orange);
+    position: relative;
+}
+
+.container {
+    max-width: 1200px;
+    margin: -120px auto 0;
+    padding: 0 20px 100px;
+    position: relative;
+    z-index: 10;
+}
+
+/* 2. PROFILE CARD (Tu Info de Artista 3D) */
+.profile-card {
+    background: var(--card-bg);
+    padding: 50px;
+    border-radius: 15px;
+    border-left: 10px solid var(--primary-orange);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.8);
+    margin-bottom: 60px;
+}
+
+.profile-card h1 {
+    font-family: var(--font-tech);
+    color: var(--primary-orange);
+    font-size: 2.8rem;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.tags {
+    display: flex;
+    gap: 12px;
+    margin: 25px 0;
+}
+
+.tags span {
+    border: 1px solid var(--primary-orange);
+    color: var(--primary-orange);
+    padding: 5px 15px;
+    font-family: var(--font-tech);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+
+/* 3. SOCIAL BUTTONS (Fix para que no sean morados) */
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 35px;
+}
+
+.social-btn {
+    text-decoration: none !important;
+    color: var(--text-main) !important;
+    font-family: var(--font-tech);
+    font-size: 0.8rem;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 12px 20px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 69, 0, 0.2);
+    transition: all 0.4s ease;
+}
+
+.social-btn:hover {
+    background: var(--primary-orange);
+    color: #000 !important;
+    box-shadow: 0 0 20px rgba(255, 69, 0, 0.4);
+}
+
+/* 4. SECCIÓN PORTAFOLIO (JS Injected) */
+.section-title {
+    font-family: var(--font-tech);
+    text-align: center;
+    margin-bottom: 50px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+}
+
 #portfolio {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
-    gap: 25px;
-    margin-top: 50px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
 }
 
 .card {
-    background: #111;
-    border: 1px solid rgba(255, 102, 0, 0.2);
-    position: relative;
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.3s ease;
+    transition: all 0.4s ease;
 }
 
-/* ESTO ES LO QUE ARREGLA TUS IMÁGENES */
+/* EL FIX CRÍTICO DE LAS IMÁGENES */
 .card-image-container {
     width: 100%;
-    height: 250px; /* Altura fija para que todas se alineen */
+    height: 240px; 
     overflow: hidden;
     background: #000;
 }
@@ -31,49 +134,36 @@
 .card-image-container img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* ESTO quita las franjas negras y hace el zoom pro */
+    object-fit: cover; /* Mata bordes negros de Captura 214005.jpg */
     object-position: center;
-    display: block;
-    transition: transform 0.5s ease;
+    transition: transform 0.6s ease;
 }
 
-/* Contenido de la tarjeta */
 .card-content {
-    padding: 20px;
-    background: #111;
+    padding: 25px;
 }
 
 .card-content h3 {
-    font-family: 'Orbitron', sans-serif; /* Tu estilo tech */
-    color: #ff6600;
-    font-size: 1.1rem;
-    margin-bottom: 8px;
-    text-transform: uppercase;
+    font-family: var(--font-tech);
+    color: var(--primary-orange);
+    margin-bottom: 10px;
 }
 
-.card-content p {
-    color: #a0a0a0;
-    font-size: 0.85rem;
-    margin-bottom: 15px;
-    height: 40px; /* Para que el texto no empuje las specs */
-    overflow: hidden;
-}
-
-/* Specs estilo infografía */
+/* Specs estilo Infografía con medidas */
 .specs {
-    font-family: 'Orbitron', sans-serif;
+    font-family: var(--font-tech);
     font-size: 0.65rem;
-    color: #ff6600;
-    border: 1px solid #ff6600;
+    color: var(--primary-orange);
+    background: rgba(255, 69, 0, 0.1);
+    padding: 4px 10px;
+    border: 1px solid var(--primary-orange);
     display: inline-block;
-    padding: 3px 8px;
-    letter-spacing: 1px;
 }
 
-/* Efecto Hover */
+/* Hovers */
 .card:hover {
-    transform: translateY(-5px);
-    border-color: #ff6600;
+    border-color: var(--primary-orange);
+    transform: translateY(-10px);
 }
 
 .card:hover img {
@@ -81,10 +171,20 @@
     filter: brightness(0.7);
 }
 
-/* Responsive para que no se rompa en cel */
+/* 5. VIGNETTE & BACKGROUND */
+#albumBg {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle, transparent 20%, rgba(0,0,0,0.9) 100%);
+    z-index: -1;
+}
+
+/* Responsive */
 @media (max-width: 900px) {
     #portfolio { grid-template-columns: repeat(2, 1fr); }
+    .profile-card h1 { font-size: 2rem; }
 }
+
 @media (max-width: 600px) {
     #portfolio { grid-template-columns: 1fr; }
 }
