@@ -1,47 +1,44 @@
-/**
- * RENDERFORGE STUDIO - SCRIPT PROFESIONAL (MODO URL)
- * Proyecto: Portafolio de Artista 3D
- */
-
-// 1. LISTA DE PROYECTOS CON LINKS EXTERNOS
-// Solo tienes que cambiar los links entre comillas por tus fotos de Discord, Imgur o ArtStation
+// LISTA DE PROYECTOS (Usa URLs directas de Imgur, Discord o ArtStation)
 const proyectos = [
     {
         titulo: "Half-Life: Headcrab",
-        desc: "Escultura orgánica y texturizado PBR avanzado.",
-        imagen: "https://tu-link-aqui.com/headcrab.jpg", // <--- PEGA AQUÍ TU URL
-        specs: "RENDER: CYCLES / BLENDER 4.5"
+        desc: "Escultura orgánica detallada con texturizado PBR y subsurface scattering.",
+        imagen: "https://cdna.artstation.com/p/assets/images/images/026/160/328/large/denis-rutkovsky-headcrab-01.jpg",
+        specs: "RENDER: CYCLES / SSS / 4K"
     },
     {
         titulo: "Patrulla Low Poly",
-        desc: "Estilo estilizado con técnica de Outline manual.",
-        imagen: "https://tu-link-aqui.com/patrulla.jpg", // <--- PEGA AQUÍ TU URL
-        specs: "STYLE: CARTOON / WORKTIME: 3H"
+        desc: "Vehículo optimizado para mobile con técnica de outline manual y flat shading.",
+        imagen: "https://cdnb.artstation.com/p/assets/images/images/010/248/033/large/tanya-v-police-car.jpg",
+        specs: "STYLE: LOW POLY / 3.5K TRIS"
     },
     {
-        titulo: "Portal Chamber",
-        desc: "Recreación de cámara de pruebas con iluminación técnica.",
-        imagen: "https://tu-link-aqui.com/portal.jpg", // <--- PEGA AQUÍ TU URL
-        specs: "ENGINE: CYCLES / VOLUMETRIC"
+        titulo: "Portal Test Chamber",
+        desc: "Recreación técnica de entorno industrial con iluminación volumétrica.",
+        imagen: "https://cdna.artstation.com/p/assets/images/images/001/017/384/large/mikhail-vaneev-chamber-04-1.jpg",
+        specs: "ENGINE: CYCLES / VOLUMETRICS"
+    },
+    {
+        titulo: "Nordic Furniture Pack",
+        desc: "Set de muebles elegantes para interiores fotorrealistas.",
+        imagen: "https://cdnb.artstation.com/p/assets/images/images/028/836/833/large/arseny-lavrukhin-render-1.jpg",
+        specs: "INTERIOR / OPTIX / ARCHVIZ"
     }
 ];
 
-// 2. FUNCIÓN DE CARGA AUTOMÁTICA
 function cargarPortafolio() {
     const container = document.getElementById('portfolio');
     if (!container) return;
 
-    container.innerHTML = ''; // Limpiamos el texto de espera
+    container.innerHTML = ''; 
 
     proyectos.forEach((proy, index) => {
         const card = document.createElement('div');
         card.className = 'card';
-        
-        // Animación de entrada escalonada que ya teníamos
         card.style.transitionDelay = `${index * 0.15}s`;
         
         card.innerHTML = `
-            <img src="${proy.imagen}" alt="${proy.titulo}" onerror="this.src='https://via.placeholder.com/600x400?text=Error+al+cargar+render'">
+            <img src="${proy.imagen}" alt="${proy.titulo}" onerror="this.src='https://via.placeholder.com/600x400?text=Render+Forge+Studio'">
             <div class="card-content">
                 <h3>${proy.titulo}</h3>
                 <p>${proy.desc}</p>
@@ -54,12 +51,11 @@ function cargarPortafolio() {
     activarAnimaciones();
 }
 
-// 3. ANIMACIONES CHIDAS (INTERSECTION OBSERVER)
 function activarAnimaciones() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible'); // La clase que dispara el CSS
+                entry.target.classList.add('visible');
                 observer.unobserve(entry.target);
             }
         });
@@ -68,5 +64,4 @@ function activarAnimaciones() {
     document.querySelectorAll('.card').forEach(card => observer.observe(card));
 }
 
-// Iniciar todo cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', cargarPortafolio);
