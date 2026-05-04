@@ -135,7 +135,7 @@ body {
 /* SECCIÓN DE DESCRIPCIÓN OPTIMIZADA (Colores mejorados) */
 .card-body {
     padding: 20px;
-    background: linear-gradient(180deg, rgba(15, 15, 15, 0.95) 0%, rgba(5, 5, 5, 1) 100%);
+    background: #080808;
     flex-grow: 1;
 }
 
@@ -159,16 +159,14 @@ body {
 .card-specs {
     border-top: 1px dashed rgba(255, 69, 0, 0.4);
     padding-top: 12px;
+    margin-top: auto; /* Empuja las specs al fondo de la card */
 }
 
 .spec-item {
     font-family: var(--font-tech);
     font-size: 0.65rem;
-    color: var(--neon-orange); /* Naranja vibrante para el título técnico */
+    color: var(--neon-orange);
     text-transform: uppercase;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 3px;
 }
 
 .spec-value {
