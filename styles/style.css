@@ -2,212 +2,187 @@
 
 :root {
     --primary-orange: #ff4500;
-    --bg-black: #0a0a0a;
-    --card-gray: #121212;
-    --border-rgba: rgba(255, 69, 0, 0.3);
+    --bg-black: #050505;
+    --card-gray: #111111;
     --font-tech: 'Orbitron', sans-serif;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    cursor: crosshair; /* Detalle de artista 3D */
 }
 
 body {
     background-color: var(--bg-black);
     color: #fff;
     font-family: 'Outfit', sans-serif;
-    overflow-x: hidden;
+    margin: 0;
 }
 
-/* 1. EL FONDO CON RUIDO (Grainy texture como tus videos) */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: url('https://grainy-gradients.vercel.app/noise.svg');
-    opacity: 0.05;
-    pointer-events: none;
-    z-index: 99;
-}
-
-/* 2. HEADER DINÁMICO */
+/* 1. EL HEADER CON LA IMAGEN DE RENDERFORGE (Arreglado) */
 .main-header {
-    height: 60vh;
-    background: linear-gradient(to bottom, rgba(10,10,10,0.4), var(--bg-black)), 
-                url('../Images/Banner_RenderForge.png') center/cover no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
+    height: 400px;
+    /* Aquí va tu imagen de banner */
+    background: linear-gradient(to bottom, rgba(5,5,5,0.2) 0%, var(--bg-black) 100%), 
+                url('../Images/RenderForgeStudio.png') center/cover no-repeat;
     border-bottom: 2px solid var(--primary-orange);
+    position: relative;
+    display: flex;
+    align-items: flex-end;
 }
 
-/* 3. PROFILE CARD (Estilo Exacto a tu Captura) */
+/* Efecto de glitch suave al banner */
+.main-header::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: repeating-linear-gradient(0deg, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 1px, transparent 1px, transparent 2px);
+    pointer-events: none;
+}
+
+/* 2. PROFILE CARD (Estilo Infografía de 16 años / 6 Exp) */
 .profile-container {
-    max-width: 1000px;
-    margin: -150px auto 50px;
+    max-width: 1100px;
+    margin: -60px auto 40px; /* Ajustado para que no tape el banner */
     padding: 0 20px;
+    position: relative;
+    z-index: 5;
 }
 
 .profile-card {
-    background: rgba(18, 18, 18, 0.95);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #0d0d0d;
     border-left: 5px solid var(--primary-orange);
-    border-radius: 10px 40px 10px 10px; /* Esquina superior derecha curva */
+    border-right: 1px solid rgba(255, 69, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 69, 0, 0.2);
+    border-radius: 4px 40px 4px 4px;
     padding: 40px;
-    box-shadow: 0 20px 80px rgba(0,0,0,0.5);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.9);
 }
 
 .profile-card h1 {
     font-family: var(--font-tech);
     color: var(--primary-orange);
-    font-size: 2.5rem;
-    text-transform: uppercase;
+    font-size: 2.4rem;
+    margin: 0 0 10px 0;
     letter-spacing: 3px;
-    margin-bottom: 20px;
+    text-transform: uppercase;
 }
 
 .bio {
-    font-size: 1rem;
-    color: #ccc;
-    margin-bottom: 30px;
-    max-width: 600px;
+    color: #cccccc;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+    max-width: 700px;
 }
 
-.bio b { color: #fff; border-bottom: 1px solid var(--primary-orange); }
-
-/* TAGS DE INFOGRAFÍA */
+/* TAGS CON MEDIDAS (Como en tus renders) */
 .tag-row {
     display: flex;
-    gap: 15px;
-    margin-bottom: 40px;
+    gap: 12px;
+    margin-bottom: 30px;
     flex-wrap: wrap;
 }
 
 .tag {
     font-family: var(--font-tech);
-    font-size: 0.7rem;
-    padding: 6px 15px;
+    font-size: 0.65rem;
+    padding: 6px 14px;
     border: 1px solid var(--primary-orange);
     color: var(--primary-orange);
     background: rgba(255, 69, 0, 0.05);
-    transition: 0.3s;
+    letter-spacing: 1px;
 }
 
-.tag:hover { background: var(--primary-orange); color: #000; }
-
-/* 4. REDES SOCIALES ESTILO UI */
+/* 3. BOTONES DE REDES (Fix de visibilidad) */
 .social-grid {
     display: flex;
     gap: 15px;
 }
 
 .social-link {
-    background: #1a1a1a;
-    border: 1px solid rgba(255,255,255,0.1);
-    color: #fff;
-    padding: 12px 25px;
+    background: #151515;
+    border: 1px solid #333;
+    color: #fff !important;
+    padding: 12px 24px;
     text-decoration: none;
     font-family: var(--font-tech);
-    font-size: 0.75rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: 0.4s;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .social-link:hover {
     border-color: var(--primary-orange);
+    color: var(--primary-orange) !important;
     background: rgba(255, 69, 0, 0.1);
-    transform: translateY(-3px);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 69, 0, 0.2);
 }
 
-/* 5. EL PORTAFOLIO JS (3 COLUMNAS) */
+/* 4. SECCIÓN PROYECTOS (Grid Optimizado) */
+.section-title {
+    max-width: 1100px;
+    margin: 80px auto 40px;
+    font-family: var(--font-tech);
+    padding: 0 20px;
+    font-size: 1.2rem;
+    color: #fff;
+    border-left: 3px solid var(--primary-orange);
+    padding-left: 15px;
+}
+
 #portfolio {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-    margin-top: 80px;
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto 100px;
+    padding: 0 20px;
 }
 
 .card {
     background: var(--card-gray);
-    border-radius: 4px;
-    border: 1px solid rgba(255,255,255,0.05);
-    overflow: hidden;
-    position: relative;
+    border: 1px solid #1a1a1a;
+    transition: 0.5s ease;
 }
 
-/* SCANLINE EFFECT (Animación de carga) */
-.card::after {
-    content: "";
-    position: absolute;
-    top: -100%;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, transparent, rgba(255, 69, 0, 0.1), transparent);
-    animation: scan 4s infinite linear;
-    pointer-events: none;
-}
-
-@keyframes scan {
-    0% { top: -100%; }
-    100% { top: 100%; }
+.card:hover {
+    border-color: var(--primary-orange);
+    transform: scale(1.02);
 }
 
 .card-image-container {
     width: 100%;
-    height: 250px;
+    height: 240px;
     overflow: hidden;
-    position: relative;
+    background: #000;
 }
 
-/* FIX DE IMAGEN PARA BLENDER RENDERS */
 .card-image-container img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    transition: 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+    object-fit: cover; /* ARREGLA EL ESTIRADO DE LAS IMÁGENES */
+    filter: grayscale(20%);
+    transition: 0.5s;
 }
 
 .card:hover img {
-    transform: scale(1.1) rotate(1deg);
-    filter: brightness(0.6);
+    filter: grayscale(0%);
 }
 
 .card-content {
-    padding: 20px;
-    border-top: 1px solid rgba(255, 69, 0, 0.2);
+    padding: 25px;
 }
 
 .card-content h3 {
     font-family: var(--font-tech);
-    color: #fff;
-    font-size: 0.9rem;
-    margin-bottom: 5px;
+    font-size: 1rem;
+    color: var(--primary-orange);
+    margin-bottom: 8px;
 }
 
 .specs {
     font-family: var(--font-tech);
     font-size: 0.6rem;
-    color: var(--primary-orange);
-    letter-spacing: 1px;
-    margin-top: 10px;
-}
-
-/* RESPONSIVE */
-@media (max-width: 900px) {
-    #portfolio { grid-template-columns: repeat(2, 1fr); }
-    .profile-card { border-radius: 10px; }
-}
-
-@media (max-width: 600px) {
-    #portfolio { grid-template-columns: 1fr; }
+    color: #666;
+    margin-top: 15px;
+    display: block;
+    border-top: 1px dashed #333;
+    padding-top: 10px;
 }
