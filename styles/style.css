@@ -1,129 +1,209 @@
+/* =========================================
+   ESTILO GLOBAL - RENDERFORGE STUDIO 
+   ========================================= */
 :root {
     --primary-orange: #ff6600;
     --dark-bg: #050505;
-    --card-bg: rgba(20, 20, 20, 0.95);
-    --text: #f0f0f0;
+    --card-bg: #111111;
+    --text-main: #ffffff;
+    --text-dim: #a0a0a0;
+    --font-tech: 'Orbitron', sans-serif;
+    --font-body: 'Roboto', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
     background-color: var(--dark-bg);
-    color: var(--text);
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
+    color: var(--text-main);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
+/* Header / Banner */
 .main-header {
-    height: 400px;
-    background: linear-gradient(rgba(0,0,0,0.5), var(--dark-bg)), url('../Images/RenderForgeStudio.png') center/cover;
-    border-bottom: 2px solid var(--primary-orange);
+    height: 450px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), var(--dark-bg)), 
+                url('../Images/RenderForgeStudio.png') center/cover no-repeat;
+    border-bottom: 3px solid var(--primary-orange);
+    position: relative;
 }
 
+/* Contenedor Principal */
 .container {
-    max-width: 1100px;
-    margin: -100px auto 0;
+    max-width: 1200px;
+    margin: -120px auto 0;
     padding: 0 20px 100px;
+    position: relative;
+    z-index: 10;
 }
 
-/* Tarjeta de Perfil corregida */
+/* Tarjeta de Perfil - Blindada */
 .profile-card {
     background: var(--card-bg);
-    padding: 40px;
-    border-radius: 12px;
-    border-left: 8px solid var(--primary-orange);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    padding: 50px;
+    border-radius: 15px;
+    border-left: 10px solid var(--primary-orange);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.8);
+    margin-bottom: 60px;
 }
 
 .profile-card h1 {
-    font-family: 'Orbitron', sans-serif;
+    font-family: var(--font-tech);
     color: var(--primary-orange);
-    margin: 0;
-    font-size: 2.5rem;
+    font-size: 2.8rem;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
 }
 
-.tags { margin-top: 15px; }
+.bio {
+    font-size: 1.1rem;
+    color: var(--text-dim);
+    max-width: 800px;
+}
+
+/* Tags de Especialidad */
+.tags {
+    display: flex;
+    gap: 12px;
+    margin: 25px 0;
+}
+
 .tags span {
     border: 1px solid var(--primary-orange);
     color: var(--primary-orange);
-    padding: 4px 12px;
-    margin-right: 8px;
-    font-size: 0.7rem;
-    font-family: 'Orbitron', sans-serif;
+    padding: 5px 15px;
+    font-family: var(--font-tech);
+    font-size: 0.75rem;
+    text-transform: uppercase;
 }
 
-/* Botones de Redes - FIX TOTAL */
+/* Botones de Redes Sociales (Fix para el morado de los links) */
 .social-links {
-    margin-top: 30px;
     display: flex;
     gap: 15px;
+    margin-top: 35px;
+    flex-wrap: wrap;
 }
 
 .social-btn {
-    text-decoration: none !important; /* Mata el subrayado */
-    color: #fff !important;           /* Mata el morado */
-    font-family: 'Orbitron', sans-serif;
-    font-size: 0.75rem;
+    text-decoration: none !important;
+    color: var(--text-main) !important;
+    font-family: var(--font-tech);
+    font-size: 0.8rem;
     display: flex;
     align-items: center;
-    gap: 8px;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 10px 16px;
-    border-radius: 4px;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 12px 20px;
+    border-radius: 5px;
     border: 1px solid rgba(255, 102, 0, 0.2);
-    transition: 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .social-btn:hover {
     background: var(--primary-orange);
     color: #000 !important;
-    box-shadow: 0 0 15px var(--primary-orange);
-    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(255, 102, 0, 0.5);
+    transform: translateY(-5px);
 }
 
-/* Galería */
+/* Sección Proyectos */
 .section-title {
-    font-family: 'Orbitron', sans-serif;
+    font-family: var(--font-tech);
     text-align: center;
-    margin: 60px 0 40px;
-    letter-spacing: 4px;
+    margin-bottom: 50px;
+    letter-spacing: 6px;
+    color: var(--text-main);
+    text-transform: uppercase;
 }
 
+/* Grid de Portafolio - 3 Columnas Fijas */
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
 }
 
+/* Tarjetas de Proyecto (Fix de Desacomodo) */
 .card {
     position: relative;
-    height: 380px;
+    height: 400px; /* Altura uniforme para todas */
     background: #000;
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
     cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .card img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: top;
-    transition: 2s ease-in-out;
+    object-fit: cover; /* Llenado perfecto */
+    transition: transform 0.8s ease, filter 0.5s ease;
 }
 
+/* Overlay de Información (Flotante) */
 .card-content {
     position: absolute;
     inset: 0;
-    background: linear-gradient(transparent, rgba(0,0,0,0.9));
+    background: linear-gradient(transparent, rgba(0,0,0,0.95));
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 20px;
+    padding: 25px;
     opacity: 0;
-    transition: 0.4s;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
 }
 
-.card:hover .card-content { opacity: 1; }
-.card:hover img { object-position: bottom; filter: brightness(0.5); }
+.card:hover .card-content {
+    opacity: 1;
+    transform: translateY(0);
+}
 
-.card-content h3 { font-family: 'Orbitron', sans-serif; color: var(--primary-orange); margin: 0; }
-.card-content p { font-size: 0.85rem; margin: 10px 0; }
+.card:hover img {
+    transform: scale(1.1);
+    filter: brightness(0.4) saturate(1.2);
+}
+
+.card-content h3 {
+    font-family: var(--font-tech);
+    color: var(--primary-orange);
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+}
+
+.card-content p {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin-bottom: 12px;
+}
+
+/* Estilo Infográfico (Specs) */
+.specs {
+    font-family: var(--font-tech);
+    font-size: 0.7rem;
+    color: var(--primary-orange);
+    background: rgba(255, 102, 0, 0.1);
+    padding: 4px 8px;
+    display: inline-block;
+    border-radius: 3px;
+}
+
+/* Responsive para Pantallas Pequeñas */
+@media (max-width: 1000px) {
+    .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 650px) {
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .container { margin-top: -50px; }
+    .profile-card { padding: 30px; }
+    .profile-card h1 { font-size: 1.8rem; }
+}
