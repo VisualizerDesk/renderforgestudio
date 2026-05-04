@@ -1,188 +1,211 @@
-/* =========================================
-   RENDERFORGE STUDIO - FULL DESIGN SYSTEM
-   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Outfit:wght@300;400;600&display=swap');
+
 :root {
-    --primary-orange: #ff4500; /* Naranja Lava para evitar comparaciones raras */
-    --dark-bg: #050505;
-    --card-bg: #111111;
-    --text-main: #ffffff;
-    --text-dim: #a0a0a0;
+    --primary-orange: #ff4500;
+    --bg-black: #0a0a0a;
+    --card-gray: #121212;
+    --border-rgba: rgba(255, 69, 0, 0.3);
     --font-tech: 'Orbitron', sans-serif;
-    --font-body: 'Outfit', sans-serif;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    cursor: crosshair; /* Detalle de artista 3D */
 }
 
 body {
-    background-color: var(--dark-bg);
-    color: var(--text-main);
-    font-family: var(--font-body);
-    line-height: 1.6;
+    background-color: var(--bg-black);
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
     overflow-x: hidden;
 }
 
-/* 1. HEADER & BANNER (Lo que estaba desnudo) */
+/* 1. EL FONDO CON RUIDO (Grainy texture como tus videos) */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url('https://grainy-gradients.vercel.app/noise.svg');
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 99;
+}
+
+/* 2. HEADER DINÁMICO */
 .main-header {
-    height: 450px;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.3), var(--dark-bg)), 
-                url('../Images/RenderForgeStudio.png') center/cover no-repeat;
-    border-bottom: 3px solid var(--primary-orange);
-    position: relative;
+    height: 60vh;
+    background: linear-gradient(to bottom, rgba(10,10,10,0.4), var(--bg-black)), 
+                url('../Images/Banner_RenderForge.png') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid var(--primary-orange);
 }
 
-.container {
-    max-width: 1200px;
-    margin: -120px auto 0;
-    padding: 0 20px 100px;
-    position: relative;
-    z-index: 10;
+/* 3. PROFILE CARD (Estilo Exacto a tu Captura) */
+.profile-container {
+    max-width: 1000px;
+    margin: -150px auto 50px;
+    padding: 0 20px;
 }
 
-/* 2. PROFILE CARD (Tu Info de Artista 3D) */
 .profile-card {
-    background: var(--card-bg);
-    padding: 50px;
-    border-radius: 15px;
-    border-left: 10px solid var(--primary-orange);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.8);
-    margin-bottom: 60px;
+    background: rgba(18, 18, 18, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 5px solid var(--primary-orange);
+    border-radius: 10px 40px 10px 10px; /* Esquina superior derecha curva */
+    padding: 40px;
+    box-shadow: 0 20px 80px rgba(0,0,0,0.5);
 }
 
 .profile-card h1 {
     font-family: var(--font-tech);
     color: var(--primary-orange);
-    font-size: 2.8rem;
-    letter-spacing: 2px;
-    margin-bottom: 15px;
-}
-
-.tags {
-    display: flex;
-    gap: 12px;
-    margin: 25px 0;
-}
-
-.tags span {
-    border: 1px solid var(--primary-orange);
-    color: var(--primary-orange);
-    padding: 5px 15px;
-    font-family: var(--font-tech);
-    font-size: 0.75rem;
+    font-size: 2.5rem;
     text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
 }
 
-/* 3. SOCIAL BUTTONS (Fix para que no sean morados) */
-.social-links {
+.bio {
+    font-size: 1rem;
+    color: #ccc;
+    margin-bottom: 30px;
+    max-width: 600px;
+}
+
+.bio b { color: #fff; border-bottom: 1px solid var(--primary-orange); }
+
+/* TAGS DE INFOGRAFÍA */
+.tag-row {
     display: flex;
     gap: 15px;
-    margin-top: 35px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
 }
 
-.social-btn {
-    text-decoration: none !important;
-    color: var(--text-main) !important;
+.tag {
     font-family: var(--font-tech);
-    font-size: 0.8rem;
-    background: rgba(255, 255, 255, 0.03);
-    padding: 12px 20px;
-    border-radius: 5px;
-    border: 1px solid rgba(255, 69, 0, 0.2);
-    transition: all 0.4s ease;
+    font-size: 0.7rem;
+    padding: 6px 15px;
+    border: 1px solid var(--primary-orange);
+    color: var(--primary-orange);
+    background: rgba(255, 69, 0, 0.05);
+    transition: 0.3s;
 }
 
-.social-btn:hover {
-    background: var(--primary-orange);
-    color: #000 !important;
-    box-shadow: 0 0 20px rgba(255, 69, 0, 0.4);
+.tag:hover { background: var(--primary-orange); color: #000; }
+
+/* 4. REDES SOCIALES ESTILO UI */
+.social-grid {
+    display: flex;
+    gap: 15px;
 }
 
-/* 4. SECCIÓN PORTAFOLIO (JS Injected) */
-.section-title {
+.social-link {
+    background: #1a1a1a;
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #fff;
+    padding: 12px 25px;
+    text-decoration: none;
     font-family: var(--font-tech);
-    text-align: center;
-    margin-bottom: 50px;
-    letter-spacing: 6px;
-    text-transform: uppercase;
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.4s;
 }
 
+.social-link:hover {
+    border-color: var(--primary-orange);
+    background: rgba(255, 69, 0, 0.1);
+    transform: translateY(-3px);
+}
+
+/* 5. EL PORTAFOLIO JS (3 COLUMNAS) */
 #portfolio {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 25px;
+    margin-top: 80px;
 }
 
 .card {
-    background: var(--card-bg);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
+    background: var(--card-gray);
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.05);
     overflow: hidden;
-    transition: all 0.4s ease;
+    position: relative;
 }
 
-/* EL FIX CRÍTICO DE LAS IMÁGENES */
+/* SCANLINE EFFECT (Animación de carga) */
+.card::after {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, rgba(255, 69, 0, 0.1), transparent);
+    animation: scan 4s infinite linear;
+    pointer-events: none;
+}
+
+@keyframes scan {
+    0% { top: -100%; }
+    100% { top: 100%; }
+}
+
 .card-image-container {
     width: 100%;
-    height: 240px; 
+    height: 250px;
     overflow: hidden;
-    background: #000;
+    position: relative;
 }
 
+/* FIX DE IMAGEN PARA BLENDER RENDERS */
 .card-image-container img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Mata bordes negros de Captura 214005.jpg */
-    object-position: center;
-    transition: transform 0.6s ease;
+    object-fit: cover;
+    transition: 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.card:hover img {
+    transform: scale(1.1) rotate(1deg);
+    filter: brightness(0.6);
 }
 
 .card-content {
-    padding: 25px;
+    padding: 20px;
+    border-top: 1px solid rgba(255, 69, 0, 0.2);
 }
 
 .card-content h3 {
     font-family: var(--font-tech);
-    color: var(--primary-orange);
-    margin-bottom: 10px;
+    color: #fff;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
 }
 
-/* Specs estilo Infografía con medidas */
 .specs {
     font-family: var(--font-tech);
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     color: var(--primary-orange);
-    background: rgba(255, 69, 0, 0.1);
-    padding: 4px 10px;
-    border: 1px solid var(--primary-orange);
-    display: inline-block;
+    letter-spacing: 1px;
+    margin-top: 10px;
 }
 
-/* Hovers */
-.card:hover {
-    border-color: var(--primary-orange);
-    transform: translateY(-10px);
-}
-
-.card:hover img {
-    transform: scale(1.1);
-    filter: brightness(0.7);
-}
-
-/* 5. VIGNETTE & BACKGROUND */
-#albumBg {
-    position: fixed;
-    inset: 0;
-    background: radial-gradient(circle, transparent 20%, rgba(0,0,0,0.9) 100%);
-    z-index: -1;
-}
-
-/* Responsive */
+/* RESPONSIVE */
 @media (max-width: 900px) {
     #portfolio { grid-template-columns: repeat(2, 1fr); }
-    .profile-card h1 { font-size: 2rem; }
+    .profile-card { border-radius: 10px; }
 }
 
 @media (max-width: 600px) {
