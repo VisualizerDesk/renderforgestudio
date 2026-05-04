@@ -1,155 +1,248 @@
 /* =========================================
-   1. SETUP BASE
+   1. SETUP Y VARIABLES (ESTILO TECH)
    ========================================= */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Outfit:wght@300;400;600&display=swap');
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
     --neon-orange: #ff4500;
     --neon-glow: rgba(255, 69, 0, 0.6);
-    --glass-bg: rgba(15, 15, 15, 0.8);
+    --glass-bg: rgba(15, 15, 15, 0.85);
     --glass-border: rgba(255, 255, 255, 0.1);
     --bg-black: #050505;
     --font-tech: 'Orbitron', sans-serif;
+    --font-main: 'Outfit', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
     background-color: var(--bg-black);
     color: #fff;
-    font-family: 'Outfit', sans-serif;
+    font-family: var(--font-main);
+    background-image: radial-gradient(circle at 50% -20%, #1a0a00 0%, var(--bg-black) 80%);
     overflow-x: hidden;
+    line-height: 1.6;
 }
 
 /* =========================================
-   2. HEADER & PROFILE (Banner RenderForge)
+   2. HEADER & BANNER
    ========================================= */
 .main-header {
     width: 100%;
-    height: 380px;
+    height: 400px;
     background: linear-gradient(to bottom, transparent, var(--bg-black)), 
                 url('../Images/RenderForgeStudio.png') center/cover no-repeat;
     border-bottom: 2px solid var(--neon-orange);
-    box-shadow: 0 0 20px var(--neon-glow);
+    box-shadow: 0 0 30px var(--neon-glow);
     position: relative;
 }
 
+.overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: repeating-linear-gradient(0deg, rgba(0,0,0,0.05) 0px, rgba(0,0,0,0.05) 1px, transparent 1px, transparent 2px);
+    pointer-events: none;
+}
+
+/* =========================================
+   3. PROFILE CARD (GLASSMORPHISM)
+   ========================================= */
 .container {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
 .profile-card {
     background: var(--glass-bg);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--glass-border);
     border-left: 5px solid var(--neon-orange);
-    border-radius: 10px 40px 10px 10px;
+    border-radius: 12px 50px 12px 12px;
     padding: 40px;
-    margin-top: -80px;
+    margin-top: -100px;
     position: relative;
     z-index: 10;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.9);
 }
 
 .profile-card h1 {
     font-family: var(--font-tech);
-    font-size: 2.2rem;
-    text-shadow: 0 0 10px var(--neon-glow);
-    margin-bottom: 10px;
+    font-size: 2.5rem;
+    letter-spacing: 3px;
+    color: #fff;
+    text-shadow: 0 0 15px var(--neon-glow);
+    margin-bottom: 12px;
 }
 
-/* TAGS */
-.tags { display: flex; gap: 10px; margin-bottom: 25px; }
+.bio {
+    color: #ccc;
+    font-size: 1rem;
+    max-width: 850px;
+    margin-bottom: 25px;
+}
+
+.bio strong {
+    color: var(--neon-orange);
+}
+
+/* TAGS ESTILO INFOGRAFÍA */
+.tags {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
 .tags span {
     font-family: var(--font-tech);
-    font-size: 0.6rem;
+    font-size: 0.65rem;
     color: var(--neon-orange);
     border: 1px solid var(--neon-orange);
-    padding: 4px 12px;
+    padding: 5px 15px;
     background: rgba(255, 69, 0, 0.05);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-/* BOTONES SOCIALES FIX */
-.social-links { display: flex; gap: 12px; }
+/* =========================================
+   4. BOTONES SOCIALES (NEÓN Y VIDRIO)
+   ========================================= */
+.social-links {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
 .social-btn {
-    padding: 10px 18px;
-    background: rgba(255, 255, 255, 0.03);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 22px;
+    background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--glass-border);
+    border-radius: 4px;
     color: #fff !important;
     text-decoration: none;
     font-family: var(--font-tech);
-    font-size: 0.7rem;
-    border-radius: 4px;
-    transition: 0.3s;
+    font-size: 0.75rem;
+    transition: all 0.4s ease;
 }
 
-.yt:hover { border-color: #ff0000; box-shadow: 0 0 10px rgba(255,0,0,0.3); }
-.as:hover { border-color: #13aff0; box-shadow: 0 0 10px rgba(19,175,240,0.3); }
-.sf:hover { border-color: #1caad9; box-shadow: 0 0 10px rgba(28,170,217,0.3); }
+.social-btn:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Colores Neón por Marca */
+.yt:hover { border-color: #ff0000; box-shadow: 0 0 15px rgba(255, 0, 0, 0.4); color: #ff4d4d !important; }
+.as:hover { border-color: #13aff0; box-shadow: 0 0 15px rgba(19, 175, 240, 0.4); color: #4dc3f7 !important; }
+.sf:hover { border-color: #1caad9; box-shadow: 0 0 15px rgba(28, 170, 217, 0.4); color: #5ed2f3 !important; }
 
 /* =========================================
-   3. PORTFOLIO GRID (EL FIX DE LAS IMÁGENES)
+   5. PORTFOLIO GRID & CARDS
    ========================================= */
 .section-title {
     font-family: var(--font-tech);
-    margin: 60px 0 30px;
-    font-size: 1.1rem;
-    border-left: 4px solid var(--neon-orange);
+    font-size: 1.2rem;
+    margin: 80px 0 40px;
     padding-left: 15px;
+    border-left: 4px solid var(--neon-orange);
+    text-transform: uppercase;
 }
 
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas fijas */
-    gap: 25px;
-    padding-bottom: 80px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    padding-bottom: 100px;
 }
 
-/* LA CLASE CARD DEBE TENER ALTURA CONTROLADA */
+/* Estilo de la Card */
 .card {
-    background: rgba(20, 20, 20, 0.5);
+    background: rgba(255, 255, 255, 0.02);
     border: 1px solid var(--glass-border);
-    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
     overflow: hidden;
-    transition: 0.4s;
-    height: 400px; /* ALTURA FIJA PARA QUE NO SE ESTIREN */
+    transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     display: flex;
     flex-direction: column;
 }
 
 .card:hover {
+    transform: translateY(-12px);
     border-color: var(--neon-orange);
-    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(255, 69, 0, 0.25);
 }
 
-/* FIX CRÍTICO PARA LA IMAGEN */
-.card img, .card-img {
+/* Fix de Imagen para que no se estire */
+.card-img {
     width: 100%;
-    height: 250px; /* Altura de la imagen controlada */
-    object-fit: cover; /* Evita que se estire feo */
-    display: block;
-    filter: brightness(0.9);
+    height: 240px;
+    object-fit: cover;
+    filter: brightness(0.85);
+    transition: 0.5s;
+    border-bottom: 1px solid var(--glass-border);
 }
 
+.card:hover .card-img {
+    filter: brightness(1.1);
+}
+
+/* Cuerpo de la Card (Infografía técnica) */
 .card-body {
-    padding: 20px;
-    background: rgba(10, 10, 10, 0.8);
-    flex-grow: 1; /* Rellena el espacio restante */
+    padding: 22px;
+    background: linear-gradient(180deg, rgba(15, 15, 15, 0.95) 0%, rgba(5, 5, 5, 1) 100%);
+    flex-grow: 1;
 }
 
 .card-body h3 {
     font-family: var(--font-tech);
-    font-size: 0.9rem;
-    color: var(--neon-orange);
+    font-size: 0.95rem;
+    color: #fff;
+    margin-bottom: 8px;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
 }
 
-/* RESPONSIVO */
-@media (max-width: 900px) {
-    .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+.card-body p {
+    font-size: 0.8rem;
+    color: #aaa;
+    margin-bottom: 15px;
+    min-height: 40px;
 }
-@media (max-width: 600px) {
-    .portfolio-grid { grid-template-columns: 1fr; }
+
+/* Specs Técnicas al final de la Card */
+.card-specs {
+    border-top: 1px dashed rgba(255, 69, 0, 0.3);
+    padding-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.spec-item {
+    font-family: var(--font-tech);
+    font-size: 0.65rem;
+    color: var(--neon-orange);
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+}
+
+.spec-value {
+    color: #fff;
+    font-weight: 300;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .profile-card { padding: 30px; margin-top: -60px; }
+    .profile-card h1 { font-size: 1.8rem; }
+    .main-header { height: 320px; }
 }
