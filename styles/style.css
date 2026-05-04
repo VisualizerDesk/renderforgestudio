@@ -114,7 +114,7 @@ body {
     border-radius: 8px;
     overflow: hidden;
     transition: 0.4s;
-    height: 400px; /* Manteniendo tu altura fija */
+    height: 400px; /* Manteniendo tu altura fija para evitar estiramientos */
     display: flex;
     flex-direction: column;
 }
@@ -132,7 +132,7 @@ body {
     filter: brightness(0.9);
 }
 
-/* SECCIÓN DE DESCRIPCIÓN OPTIMIZADA */
+/* SECCIÓN DE DESCRIPCIÓN OPTIMIZADA (Colores mejorados) */
 .card-body {
     padding: 20px;
     background: linear-gradient(180deg, rgba(15, 15, 15, 0.95) 0%, rgba(5, 5, 5, 1) 100%);
@@ -142,7 +142,7 @@ body {
 .card-body h3 {
     font-family: var(--font-tech);
     font-size: 0.9rem;
-    color: #ffffff; /* Blanco puro para que resalte */
+    color: #ffffff; /* Blanco para el título */
     margin-bottom: 6px;
     letter-spacing: 1px;
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
@@ -150,7 +150,7 @@ body {
 
 .card-body p {
     font-size: 0.78rem;
-    color: #bbbbbb; /* Gris claro para lectura suave */
+    color: #bbbbbb; /* Gris claro para la descripción */
     margin-bottom: 14px;
     font-weight: 300;
 }
@@ -172,7 +172,7 @@ body {
 }
 
 .spec-value {
-    color: #ffffff; /* Blanco para los valores técnicos */
+    color: #ffffff; /* Blanco para los valores técnicos resaltados */
     font-weight: 400;
     letter-spacing: 0.5px;
 }
