@@ -23,7 +23,7 @@ body {
 .main-header {
     width: 100%;
     height: 450px;
-    /* Los dos puntos sirven para salir de la carpeta 'styles' */
+    /* Sale de 'styles' y entra a 'Images' respetando la mayúscula */
     background-image: url('../Images/RenderForgeStudio.png'); 
     background-size: cover;
     background-position: center;
@@ -47,7 +47,6 @@ body {
     z-index: 10;
 }
 
-/* PERFIL */
 .profile-card {
     background: var(--card-bg);
     padding: 40px;
@@ -61,15 +60,8 @@ body {
 .profile-card h1 {
     font-family: 'Orbitron', sans-serif;
     font-size: 2.5rem;
-    letter-spacing: 2px;
     color: var(--primary-orange);
     text-shadow: 0 0 15px rgba(255, 102, 0, 0.4);
-}
-
-.bio {
-    font-size: 1.1rem;
-    margin: 15px 0;
-    color: #bbb;
 }
 
 .tags {
@@ -88,37 +80,18 @@ body {
     font-family: 'Orbitron', sans-serif;
 }
 
-/* GRID ESTILO ARTSTATION */
-.section-title {
-    font-family: 'Orbitron', sans-serif;
-    margin-bottom: 40px;
-    font-size: 1.5rem;
-    color: #888;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.section-title::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: #333;
-}
-
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 25px;
 }
 
-/* TARJETAS DINÁMICAS */
 .card {
     background: #111;
     border-radius: 8px;
     overflow: hidden;
     border: 1px solid #222;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.4s ease;
     opacity: 0;
     transform: translateY(30px);
 }
@@ -131,33 +104,16 @@ body {
 .card:hover {
     transform: translateY(-12px);
     border-color: var(--primary-orange);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 20px rgba(255, 102, 0, 0.1);
 }
 
 .card img {
     width: 100%;
     height: 230px;
     object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-.card:hover img {
-    transform: scale(1.05);
 }
 
 .card-content {
     padding: 25px;
-}
-
-.card-content h3 {
-    font-family: 'Orbitron', sans-serif;
-    color: var(--text-color);
-    margin-bottom: 12px;
-}
-
-.card-content p {
-    font-size: 0.9rem;
-    color: #999;
 }
 
 .specs {
@@ -166,15 +122,6 @@ body {
     font-size: 0.75rem;
     background: #000;
     padding: 8px 12px;
-    display: inline-block;
     color: var(--primary-orange);
-    border: 1px solid #222;
     border-radius: 4px;
-}
-
-footer {
-    text-align: center;
-    padding: 50px;
-    color: #444;
-    font-size: 0.8rem;
-}
+}v
