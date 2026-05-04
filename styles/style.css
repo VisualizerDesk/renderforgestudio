@@ -93,14 +93,13 @@ body {
     gap: 25px;
 }
 
-.card img {
-    width: 100%;
-    height: 100%;
-    /* 'contain' asegura que se vea TODA la imagen sin zoom forzado */
-    object-fit: contain; 
-    /* Fondo negro para que si el render es cuadrado no se vea vacío el fondo */
-    background-color: #000; 
-    transition: transform 0.5s ease;
+.card {
+    position: relative;
+    height: 380px;
+    background: #000;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
 }
 
 .card img {
@@ -121,12 +120,6 @@ body {
     padding: 20px;
     opacity: 0;
     transition: 0.4s;
-}
-
-.card:hover img {
-    /* En lugar de mover la posición, mejor hacemos un zoom controlado */
-    transform: scale(1.1);
-    filter: brightness(0.6);
 }
 
 .card:hover .card-content { opacity: 1; }
