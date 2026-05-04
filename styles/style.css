@@ -1,8 +1,10 @@
 :root {
-    --primary-orange: #e67e22;
-    --dark-bg: #0f0f0f;
-    --card-bg: #1a1a1a;
-    --text-color: #e0e0e0;
+    --primary-orange: #ff6600;
+    --accent-orange: #e67e22;
+    --dark-bg: #0a0a0a;
+    --card-bg: rgba(26, 26, 26, 0.95);
+    --text-color: #f0f0f0;
+    --glass-border: rgba(255, 102, 0, 0.2);
 }
 
 * {
@@ -15,80 +17,110 @@ body {
     background-color: var(--dark-bg);
     color: var(--text-color);
     font-family: 'Roboto', sans-serif;
-    line-height: 1.6;
     overflow-x: hidden;
 }
 
-/* HEADER Y BANNER */
+/* BANNER PRINCIPAL */
 .main-header {
     width: 100%;
-    height: 400px;
-    background-image: url('../Images/RenderForge Studio.jpg'); /* Asegúrate de que el nombre coincida */
+    height: 450px;
+    background-image: url('https://i.imgur.com/vH3sYqB.jpeg'); /* SUSTITUYE POR TU URL DE RENDERFORGE STUDIO_2.JPG */
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    border-bottom: 4px solid var(--primary-orange);
-    animation: fadeIn 1.5s ease-in;
+    border-bottom: 3px solid var(--primary-orange);
+    position: relative;
+    box-shadow: inset 0 -100px 100px var(--dark-bg);
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 50%, var(--dark-bg));
 }
 
 .container {
     max-width: 1200px;
-    margin: -50px auto 0;
-    padding: 0 20px 60px;
+    margin: -80px auto 0;
+    padding: 0 20px 100px;
+    position: relative;
+    z-index: 10;
 }
 
-/* TARJETA DE PERFIL */
+/* PERFIL */
 .profile-card {
     background: var(--card-bg);
     padding: 40px;
-    border-radius: 12px;
-    border-left: 5px solid var(--primary-orange);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    margin-bottom: 50px;
+    border-radius: 15px;
+    border: 1px solid var(--glass-border);
+    border-left: 6px solid var(--primary-orange);
+    backdrop-filter: blur(10px);
+    margin-bottom: 60px;
 }
 
 .profile-card h1 {
     font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
     color: var(--primary-orange);
-    margin-bottom: 10px;
+    text-shadow: 0 0 15px rgba(255, 102, 0, 0.4);
+}
+
+.bio {
+    font-size: 1.1rem;
+    margin: 15px 0;
+    color: #bbb;
 }
 
 .tags {
     display: flex;
-    gap: 10px;
+    flex-wrap: wrap;
+    gap: 12px;
     margin-top: 20px;
 }
 
 .tags span {
-    background: #333;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 0.8rem;
+    background: rgba(255, 102, 0, 0.1);
+    padding: 6px 18px;
+    border-radius: 5px;
+    font-size: 0.85rem;
     border: 1px solid var(--primary-orange);
+    font-family: 'Orbitron', sans-serif;
 }
 
-/* GRID DE PORTAFOLIO */
+/* GRID ESTILO ARTSTATION */
 .section-title {
     font-family: 'Orbitron', sans-serif;
-    margin-bottom: 30px;
-    border-bottom: 1px solid #333;
-    padding-bottom: 10px;
+    margin-bottom: 40px;
+    font-size: 1.5rem;
+    color: #888;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #333;
 }
 
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 25px;
 }
 
 /* TARJETAS DINÁMICAS */
 .card {
-    background: var(--card-bg);
-    border-radius: 10px;
+    background: #111;
+    border-radius: 8px;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    opacity: 0; /* Para el efecto de revelado */
-    transform: translateY(20px);
+    border: 1px solid #222;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0;
+    transform: translateY(30px);
 }
 
 .card.visible {
@@ -97,50 +129,52 @@ body {
 }
 
 .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(230, 126, 34, 0.2);
+    transform: translateY(-12px);
+    border-color: var(--primary-orange);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 20px rgba(255, 102, 0, 0.1);
 }
 
 .card img {
     width: 100%;
-    height: 200px;
+    height: 230px;
     object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card:hover img {
+    transform: scale(1.05);
 }
 
 .card-content {
-    padding: 20px;
+    padding: 25px;
 }
 
 .card-content h3 {
-    color: var(--primary-orange);
-    margin-bottom: 10px;
+    font-family: 'Orbitron', sans-serif;
+    color: var(--text-color);
+    margin-bottom: 12px;
+}
+
+.card-content p {
+    font-size: 0.9rem;
+    color: #999;
 }
 
 .specs {
-    margin-top: 15px;
+    margin-top: 20px;
     font-family: 'Orbitron', sans-serif;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     background: #000;
-    padding: 5px;
+    padding: 8px 12px;
     display: inline-block;
-    color: #888;
-}
-
-.loading {
-    text-align: center;
-    grid-column: 1/-1;
-    padding: 50px;
     color: var(--primary-orange);
-    font-family: 'Orbitron', sans-serif;
+    border: 1px solid #222;
+    border-radius: 4px;
 }
 
-/* ANIMACIONES */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@media (max-width: 768px) {
-    .main-header { height: 250px; }
-    .container { margin-top: -30px; }
+footer {
+    text-align: center;
+    padding: 50px;
+    color: #444;
+    font-size: 0.8rem;
 }
