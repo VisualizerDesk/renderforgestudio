@@ -20,10 +20,10 @@ body {
     overflow-x: hidden;
 }
 
-/* BANNER PRINCIPAL */
 .main-header {
     width: 100%;
     height: 450px;
+    /* Los dos puntos sirven para salir de la carpeta 'styles' */
     background-image: url('../Images/RenderForgeStudio.png'); 
     background-size: cover;
     background-position: center;
