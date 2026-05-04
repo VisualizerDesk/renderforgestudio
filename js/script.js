@@ -1,41 +1,72 @@
-// CONFIGURACIÓN DE RENDERFORGE STUDIOS
-const PROYECTOS = [
+/**
+ * RENDERFORGE STUDIO - SCRIPT PROFESIONAL (MODO URL)
+ * Proyecto: Portafolio de Artista 3D
+ */
+
+// 1. LISTA DE PROYECTOS CON LINKS EXTERNOS
+// Solo tienes que cambiar los links entre comillas por tus fotos de Discord, Imgur o ArtStation
+const proyectos = [
     {
-        titulo: "Mi Primer Render Pro",
-        descripcion: "Modelado hardsurface optimizado para videojuegos.",
-        specs: "Cycles / 4K / Optix",
-        // Aquí pegas el link de tu imagen (de ArtStation, Imgur, etc.)
-        imagen: "https://via.placeholder.com/800x450" 
+        titulo: "Half-Life: Headcrab",
+        desc: "Escultura orgánica y texturizado PBR avanzado.",
+        imagen: "https://tu-link-aqui.com/headcrab.jpg", // <--- PEGA AQUÍ TU URL
+        specs: "RENDER: CYCLES / BLENDER 4.5"
     },
     {
-        titulo: "Proyecto Norte",
-        descripcion: "Pack de muebles nórdicos elegantes.",
-        specs: "Eevee / Real-time",
-        imagen: "https://via.placeholder.com/800x450"
+        titulo: "Patrulla Low Poly",
+        desc: "Estilo estilizado con técnica de Outline manual.",
+        imagen: "https://tu-link-aqui.com/patrulla.jpg", // <--- PEGA AQUÍ TU URL
+        specs: "STYLE: CARTOON / WORKTIME: 3H"
+    },
+    {
+        titulo: "Portal Chamber",
+        desc: "Recreación de cámara de pruebas con iluminación técnica.",
+        imagen: "https://tu-link-aqui.com/portal.jpg", // <--- PEGA AQUÍ TU URL
+        specs: "ENGINE: CYCLES / VOLUMETRIC"
     }
-    // Puedes copiar y pegar más bloques aquí abajo
 ];
 
+// 2. FUNCIÓN DE CARGA AUTOMÁTICA
 function cargarPortafolio() {
-    const contenedor = document.getElementById('portfolio');
-    contenedor.innerHTML = ''; // Limpiamos el cargando
+    const container = document.getElementById('portfolio');
+    if (!container) return;
 
-    PROYECTOS.forEach((p, index) => {
+    container.innerHTML = ''; // Limpiamos el texto de espera
+
+    proyectos.forEach((proy, index) => {
         const card = document.createElement('div');
         card.className = 'card';
-        // Animación de entrada escalonada
-        setTimeout(() => card.classList.add('visible'), index * 200);
-
+        
+        // Animación de entrada escalonada que ya teníamos
+        card.style.transitionDelay = `${index * 0.15}s`;
+        
         card.innerHTML = `
-            <img src="${p.imagen}" alt="${p.titulo}">
+            <img src="${proy.imagen}" alt="${proy.titulo}" onerror="this.src='https://via.placeholder.com/600x400?text=Error+al+cargar+render'">
             <div class="card-content">
-                <h3>${p.titulo}</h3>
-                <p>${p.descripcion}</p>
-                <div class="specs">${p.specs}</div>
+                <h3>${proy.titulo}</h3>
+                <p>${proy.desc}</p>
+                <div class="specs">${proy.specs}</div>
             </div>
         `;
-        contenedor.appendChild(card);
+        container.appendChild(card);
     });
+
+    activarAnimaciones();
 }
 
+// 3. ANIMACIONES CHIDAS (INTERSECTION OBSERVER)
+function activarAnimaciones() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible'); // La clase que dispara el CSS
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.card').forEach(card => observer.observe(card));
+}
+
+// Iniciar todo cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', cargarPortafolio);
