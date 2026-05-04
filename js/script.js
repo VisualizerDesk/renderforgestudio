@@ -1,9 +1,9 @@
 const proyectos = [
     {
-        titulo: "Half-Life: Headcrab",
-        desc: "Escultura orgánica detallada con texturizado PBR y subsurface scattering.",
-        imagen: "https://cdna.artstation.com/p/assets/images/images/026/160/328/large/denis-rutkovsky-headcrab-01.jpg",
-        specs: "RENDER: CYCLES / SSS"
+        titulo: "Half-Life 3D Game",
+        desc: "Diseño de un cuarto minimalista.",
+        imagen: "https://cdnb.artstation.com/p/assets/images/images/098/477/277/large/artissst-blend-render1.jpg",
+        specs: "RENDER: CYCLES"
     },
     {
         titulo: "Patrulla Low Poly",
