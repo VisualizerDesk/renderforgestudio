@@ -20,7 +20,7 @@ body::before{
 content:"";
 position:fixed;
 inset:0;
-background:radial-gradient(circle at var(--x,50%) var(--y,50%), rgba(255,69,0,0.15), transparent 40%);
+background:radial-gradient(circle at var(--x,50%) var(--y,50%), rgba(255,90,31,0.15), transparent 40%);
 pointer-events:none;
 z-index:0;
 }
@@ -36,6 +36,7 @@ padding:15px 40px;
 background:rgba(0,0,0,0.6);
 backdrop-filter:blur(10px);
 z-index:100;
+transition:0.3s;
 }
 
 .logo{
@@ -48,6 +49,7 @@ margin-left:20px;
 color:white;
 text-decoration:none;
 font-size:0.8rem;
+transition:0.3s;
 }
 
 .nav-links a:hover{
@@ -77,8 +79,8 @@ animation:glow 2s infinite alternate;
 }
 
 @keyframes glow{
-0%{text-shadow:0 0 10px rgba(255,69,0,0.3);}
-100%{text-shadow:0 0 25px rgba(255,69,0,0.8);}
+0%{text-shadow:0 0 10px rgba(255,90,31,0.3);}
+100%{text-shadow:0 0 25px rgba(255,90,31,0.8);}
 }
 
 .hero p{
@@ -94,6 +96,7 @@ color:white;
 text-decoration:none;
 position:relative;
 overflow:hidden;
+transition:0.3s;
 }
 
 .buttons a::after{
@@ -145,11 +148,12 @@ transform:translateY(-10px);
 border-color:var(--orange);
 }
 
+/* shine effect */
 .card::before{
 content:"";
 position:absolute;
 inset:0;
-background:linear-gradient(120deg, transparent, rgba(255,69,0,0.4), transparent);
+background:linear-gradient(120deg, transparent, rgba(255,90,31,0.4), transparent);
 opacity:0;
 }
 
@@ -161,6 +165,11 @@ animation:shine 1s;
 @keyframes shine{
 0%{transform:translateX(-100%);}
 100%{transform:translateX(100%);}
+}
+
+/* click feedback */
+.card:active{
+transform:scale(0.97);
 }
 
 .card img{
@@ -196,32 +205,50 @@ padding:12px 25px;
 border:1px solid var(--orange);
 text-decoration:none;
 color:white;
-box-shadow:0 0 10px rgba(255,69,0,0.3);
+box-shadow:0 0 10px rgba(255,90,31,0.3);
+transition:0.3s;
 }
 
 .contact a:hover{
 background:var(--orange);
-box-shadow:0 0 25px rgba(255,69,0,0.8);
+box-shadow:0 0 25px rgba(255,90,31,0.8);
 }
 
-/* MODAL */
+/* 💀 MODAL PRO */
 #modal{
 display:none;
 position:fixed;
 inset:0;
-background:rgba(0,0,0,0.9);
+background:rgba(0,0,0,0.95);
 justify-content:center;
 align-items:center;
 z-index:200;
+opacity:0;
+transition:0.4s;
+}
+
+#modal.active{
+display:flex;
+opacity:1;
 }
 
 .modal-content{
 max-width:700px;
 text-align:center;
+transform:scale(0.7) translateY(40px);
+opacity:0;
+transition:0.4s ease;
+}
+
+#modal.active .modal-content{
+transform:scale(1) translateY(0);
+opacity:1;
 }
 
 .modal-content img{
 width:100%;
+border-radius:10px;
+box-shadow:0 0 40px rgba(255,90,31,0.5);
 }
 
 .close{
@@ -230,4 +257,10 @@ top:20px;
 right:40px;
 font-size:2rem;
 cursor:pointer;
+transition:0.3s;
+}
+
+.close:hover{
+color:var(--orange);
+transform:scale(1.2);
 }
