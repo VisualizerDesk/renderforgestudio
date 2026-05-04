@@ -5,9 +5,9 @@
 
 // 1. CONFIGURACIÓN DEL PANEL (Cámbialo cuando tengas tu ID)
 const CONFIG = {
-    PROJECT_ID: 'TU_ID_DE_SANITY_AQUÍ', 
+    PROJECT_ID: 'foe69r3l', // Tu ID de Sanity
     DATASET: 'production',
-    USE_MANUAL_DATA: false // Ya está en FALSE para que no use ejemplos
+    USE_MANUAL_DATA: false 
 };
 
 // 2. FUNCIÓN PARA RENDERIZAR LAS TARJETAS
