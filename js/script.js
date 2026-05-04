@@ -18,9 +18,15 @@ imagen:"https://cdna.artstation.com/p/assets/images/images/098/452/908/large/art
 
 const container = document.getElementById("portfolio");
 
-proyectos.forEach(p=>{
+/* CREAR CARDS */
+proyectos.forEach((p,index)=>{
 let card=document.createElement("div");
 card.className="card";
+
+/* animación entrada */
+card.style.opacity="0";
+card.style.transform="translateY(40px)";
+card.style.transition=`all 0.6s ease ${index*0.15}s`;
 
 card.innerHTML=`
 <img src="${p.imagen}">
@@ -33,6 +39,12 @@ card.innerHTML=`
 card.onclick=()=>openModal(p);
 
 container.appendChild(card);
+
+/* activar animación */
+setTimeout(()=>{
+card.style.opacity="1";
+card.style.transform="translateY(0)";
+},100);
 });
 
 /* MODAL */
@@ -51,20 +63,39 @@ modal.innerHTML=`
 document.body.appendChild(modal);
 
 function openModal(p){
-modal.style.display="flex";
+modal.classList.add("active");
+
 document.getElementById("modal-img").src=p.imagen;
 document.getElementById("modal-title").innerText=p.titulo;
 document.getElementById("modal-desc").innerText=p.desc;
 }
 
-modal.onclick=(e)=>{
-if(e.target.id==="modal"||e.target.className==="close"){
-modal.style.display="none";
+/* cerrar modal */
+modal.addEventListener("click",(e)=>{
+if(e.target.id==="modal"||e.target.classList.contains("close")){
+modal.classList.remove("active");
 }
-};
+});
+
+/* cerrar con ESC */
+document.addEventListener("keydown",(e)=>{
+if(e.key==="Escape"){
+modal.classList.remove("active");
+}
+});
 
 /* 🔥 MOUSE GLOW */
 document.addEventListener("mousemove",(e)=>{
 document.body.style.setProperty("--x", e.clientX+"px");
 document.body.style.setProperty("--y", e.clientY+"px");
+});
+
+/* navbar efecto scroll */
+window.addEventListener("scroll",()=>{
+const nav=document.querySelector(".navbar");
+if(window.scrollY>50){
+nav.style.background="rgba(0,0,0,0.9)";
+}else{
+nav.style.background="rgba(0,0,0,0.6)";
+}
 });
