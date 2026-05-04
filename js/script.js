@@ -7,15 +7,15 @@ const proyectos = [
     },
     {
         titulo: "Patrulla Low Poly",
-        desc: "Vehículo optimizado para mobile con técnica de outline manual.",
-        imagen: "https://cdnb.artstation.com/p/assets/images/images/010/248/033/large/tanya-v-police-car.jpg",
-        specs: "STYLE: LOW POLY / 3.5K TRIS"
+        desc: "Vehículo optimizado GameAsset.",
+        imagen: "https://cdnb.artstation.com/p/assets/images/images/098/709/995/large/artissst-blend-4.jpg",
+        specs: "STYLE: LOW POLY"
     },
     {
-        titulo: "Nordic Furniture Pack",
-        desc: "Set de muebles elegantes para interiores fotorrealistas.",
-        imagen: "https://cdnb.artstation.com/p/assets/images/images/028/836/833/large/arseny-lavrukhin-render-1.jpg",
-        specs: "INTERIOR / OPTIX"
+        titulo: "Portal Game Room",
+        desc: "Cuarto realista en 3D inspirado en Portal.",
+        imagen: "https://cdna.artstation.com/p/assets/images/images/098/452/908/large/artissst-blend-asdaf.jpg",
+        specs: "Cycle"
     }
 ];
 
