@@ -1,0 +1,131 @@
+:root {
+    --primary-orange: #d48411;
+    --glow-orange: rgba(212, 132, 17, 0.4);
+    --dark-bg: #0a0a0a;
+    --card-bg: rgba(26, 26, 26, 0.9);
+    --text-main: #ffffff;
+    --text-dim: #b0b0b0;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-main);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.main-header {
+    width: 100%;
+    /* Altura fija para que coincida con tu nuevo diseño */
+    height: 400px; 
+    background-image: url('../Images/RenderForgeStudio.png');
+    background-size: cover; /* Cubre todo el ancho */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #1a1a1a;
+    border-bottom: 4px solid var(--primary-orange);
+    animation: slideDown 1s ease-out;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 30px auto 0; 
+    padding: 0 20px 60px;
+}
+
+/* Tarjeta Estilo Glassmorphism */
+.about-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-left: 6px solid var(--primary-orange);
+    margin-bottom: 50px;
+    animation: fadeIn 1.2s ease-out;
+}
+
+.badge {
+    background: #222;
+    color: var(--primary-orange);
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    border: 1px solid var(--primary-orange);
+    margin-right: 8px;
+    transition: 0.3s;
+}
+
+.badge:hover {
+    background: var(--primary-orange);
+    color: white;
+    box-shadow: 0 0 15px var(--glow-orange);
+}
+
+/* Grid de Proyectos con Animación Staggered */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #333;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0; /* Empiezan invisibles para el JS */
+    transform: translateY(30px);
+}
+
+.card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card:hover {
+    transform: scale(1.05) translateY(-5px);
+    border-color: var(--primary-orange);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.8), 0 0 20px var(--glow-orange);
+}
+
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    filter: grayscale(30%);
+    transition: 0.5s;
+}
+
+.card:hover img {
+    filter: grayscale(0%);
+}
+
+.specs {
+    margin-top: 15px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    color: var(--primary-orange);
+    background: rgba(0,0,0,0.5);
+    padding: 8px;
+    border-radius: 4px;
+    display: inline-block;
+    border: 1px solid #444;
+}
+
+/* Keyframes para Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+footer { text-align: center; padding: 50px; color: #444; }
