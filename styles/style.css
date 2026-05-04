@@ -1,162 +1,143 @@
 :root {
     --primary-orange: #ff6600;
-    --accent-orange: #ff9500;
     --dark-bg: #050505;
-    --card-bg: rgba(20, 20, 20, 0.8);
+    --card-bg: rgba(20, 20, 20, 0.9);
     --text-color: #f0f0f0;
-    --neon-glow: 0 0 20px rgba(255, 102, 0, 0.3);
+    --neon: 0 0 15px rgba(255, 102, 0, 0.3);
 }
 
-/* 1. Scrollbar Personalizado (Estilo Cyberpunk) */
+/* Scrollbar Personalizado */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: var(--dark-bg); }
-::-webkit-scrollbar-thumb { 
-    background: var(--primary-orange); 
-    border-radius: 10px;
-    box-shadow: var(--neon-glow);
-}
+::-webkit-scrollbar-thumb { background: var(--primary-orange); border-radius: 10px; }
 
 body {
     background-color: var(--dark-bg);
     color: var(--text-color);
     font-family: 'Roboto', sans-serif;
-    line-height: 1.6;
+    margin: 0;
     overflow-x: hidden;
 }
 
-/* 2. Banner con efecto de Parallax y Escaneo */
 .main-header {
-    height: 500px;
+    height: 450px;
     background: url('../Images/RenderForgeStudio.png') fixed center/cover;
     position: relative;
     border-bottom: 2px solid var(--primary-orange);
-    overflow: hidden;
-}
-
-/* Línea de escaneo animada sobre el banner */
-.main-header::after {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
-                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-    background-size: 100% 2px, 3px 100%;
-    pointer-events: none;
 }
 
 .overlay {
     position: absolute;
     width: 100%; height: 100%;
-    background: linear-gradient(to bottom, transparent 20%, var(--dark-bg));
+    background: linear-gradient(to bottom, transparent, var(--dark-bg));
 }
 
-/* 3. Tarjeta de Perfil con Glassmorphism */
+.container {
+    max-width: 1200px;
+    margin: -60px auto 0;
+    padding: 0 20px 100px;
+    position: relative;
+    z-index: 10;
+}
+
 .profile-card {
     background: var(--card-bg);
-    padding: 50px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 102, 0, 0.15);
+    padding: 40px;
+    border-radius: 15px;
     border-left: 8px solid var(--primary-orange);
-    backdrop-filter: blur(15px);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-    margin-bottom: 80px;
-    transform: perspective(1000px) rotateX(2deg);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    margin-bottom: 60px;
 }
 
 .profile-card h1 {
     font-family: 'Orbitron', sans-serif;
-    font-size: 3rem;
-    background: linear-gradient(90deg, #fff, var(--primary-orange));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(var(--neon-glow));
-    margin-bottom: 15px;
+    color: var(--primary-orange);
+    font-size: 2.8rem;
+    margin: 0 0 15px 0;
 }
 
-/* 4. Etiquetas con Glitch */
 .tags span {
-    background: transparent;
+    display: inline-block;
     border: 1px solid var(--primary-orange);
     color: var(--primary-orange);
-    padding: 8px 20px;
+    padding: 5px 15px;
+    margin: 5px;
     font-family: 'Orbitron', sans-serif;
-    font-size: 0.75rem;
-    transition: 0.3s;
-    cursor: crosshair;
+    font-size: 0.8rem;
 }
 
-.tags span:hover {
-    background: var(--primary-orange);
-    color: #fff;
-    box-shadow: var(--neon-glow);
-    transform: scale(1.1);
-}
-
-/* 5. Títulos de sección pro */
 .section-title {
     font-family: 'Orbitron', sans-serif;
     text-align: center;
-    margin-bottom: 50px;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    position: relative;
+    letter-spacing: 4px;
+    margin-bottom: 40px;
 }
 
-.section-title::after {
-    content: "";
-    display: block;
-    width: 100px;
-    height: 3px;
-    background: var(--primary-orange);
-    margin: 10px auto;
-    box-shadow: var(--neon-glow);
-}
-
-/* 6. Grid de Portafolio - El "Showroom" */
+/* GRID Y CARDS */
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 30px;
 }
 
 .card {
-    background: #0f0f0f;
-    border-radius: 4px;
+    background: #111;
+    border-radius: 8px;
+    border: 1px solid #222;
     overflow: hidden;
-    border: 1px solid #1a1a1a;
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: 0.4s ease;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.card.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .card:hover {
-    transform: scale(1.03);
     border-color: var(--primary-orange);
-    box-shadow: 0 0 30px rgba(255, 102, 0, 0.15);
+    box-shadow: var(--neon);
+}
+
+/* EFECTO DE IMAGEN PANORÁMICA */
+.card-image-container {
+    width: 100%;
+    height: 250px; /* Tamaño igual para todas las cards */
+    overflow: hidden;
+    background: #000;
 }
 
 .card img {
-    filter: grayscale(30%);
-    transition: 0.5s;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Mantiene proporción */
+    object-position: top; /* Empieza arriba */
+    transition: object-position 1.5s ease-in-out, filter 0.5s ease;
+    filter: grayscale(40%);
 }
 
 .card:hover img {
+    object-position: bottom; /* Baja hasta el final del render */
     filter: grayscale(0%);
 }
 
 .card-content {
-    padding: 25px;
-    background: linear-gradient(180deg, transparent, #080808);
+    padding: 20px;
 }
 
 .card-content h3 {
     font-family: 'Orbitron', sans-serif;
-    font-size: 1.1rem;
     color: var(--primary-orange);
-    margin-bottom: 10px;
+    margin: 0 0 10px 0;
 }
 
 .specs {
+    margin-top: 15px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.7rem;
+    color: #888;
     border-top: 1px solid #222;
-    padding-top: 15px;
-    font-weight: bold;
-    letter-spacing: 1px;
+    padding-top: 10px;
 }
