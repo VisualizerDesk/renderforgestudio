@@ -1,57 +1,41 @@
 /* =========================================
-   1. RESET Y FUENTES
+   1. SETUP BASE
    ========================================= */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Outfit:wght@300;400;600&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
     --neon-orange: #ff4500;
     --neon-glow: rgba(255, 69, 0, 0.6);
-    --glass-bg: rgba(15, 15, 15, 0.75);
+    --glass-bg: rgba(15, 15, 15, 0.8);
     --glass-border: rgba(255, 255, 255, 0.1);
     --bg-black: #050505;
     --font-tech: 'Orbitron', sans-serif;
-    --font-main: 'Outfit', sans-serif;
 }
 
 body {
     background-color: var(--bg-black);
     color: #fff;
-    font-family: var(--font-main);
+    font-family: 'Outfit', sans-serif;
     overflow-x: hidden;
-    /* Fondo con ligero brillo radial */
-    background-image: radial-gradient(circle at 50% -20%, #1a0a00 0%, var(--bg-black) 70%);
 }
 
 /* =========================================
-   2. HEADER (TU BANNER)
+   2. HEADER & PROFILE (Banner RenderForge)
    ========================================= */
 .main-header {
     width: 100%;
-    height: 400px;
+    height: 380px;
     background: linear-gradient(to bottom, transparent, var(--bg-black)), 
                 url('../Images/RenderForgeStudio.png') center/cover no-repeat;
     border-bottom: 2px solid var(--neon-orange);
-    box-shadow: 0 0 30px var(--neon-glow);
+    box-shadow: 0 0 20px var(--neon-glow);
     position: relative;
 }
 
-.overlay {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: repeating-linear-gradient(0deg, rgba(0,0,0,0.1) 0px, rgba(0,0,0,0.1) 1px, transparent 1px, transparent 2px);
-}
-
-/* =========================================
-   3. CONTENEDOR Y PROFILE CARD (VIDRIO)
-   ========================================= */
 .container {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -64,122 +48,108 @@ body {
     border-left: 5px solid var(--neon-orange);
     border-radius: 10px 40px 10px 10px;
     padding: 40px;
-    margin-top: -100px; /* Sube la card sobre el banner */
+    margin-top: -80px;
     position: relative;
     z-index: 10;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.9);
 }
 
 .profile-card h1 {
     font-family: var(--font-tech);
-    font-size: 2.5rem;
-    color: #fff;
-    text-shadow: 0 0 15px var(--neon-glow);
+    font-size: 2.2rem;
+    text-shadow: 0 0 10px var(--neon-glow);
     margin-bottom: 10px;
-    letter-spacing: 3px;
 }
 
-.bio {
-    color: #ccc;
-    font-size: 1rem;
-    margin-bottom: 20px;
-    max-width: 800px;
-}
-
-.bio strong {
-    color: var(--neon-orange);
-}
-
-/* TAGS (ESTILO INFOGRAFÍA) */
-.tags {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 30px;
-}
-
+/* TAGS */
+.tags { display: flex; gap: 10px; margin-bottom: 25px; }
 .tags span {
     font-family: var(--font-tech);
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     color: var(--neon-orange);
     border: 1px solid var(--neon-orange);
-    padding: 5px 12px;
+    padding: 4px 12px;
     background: rgba(255, 69, 0, 0.05);
-    text-transform: uppercase;
 }
 
-/* =========================================
-   4. BOTONES SOCIALES (NEÓN)
-   ========================================= */
-.social-links {
-    display: flex;
-    gap: 15px;
-}
-
+/* BOTONES SOCIALES FIX */
+.social-links { display: flex; gap: 12px; }
 .social-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 20px;
+    padding: 10px 18px;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--glass-border);
-    border-radius: 4px;
     color: #fff !important;
     text-decoration: none;
     font-family: var(--font-tech);
     font-size: 0.7rem;
-    transition: 0.3s all ease;
+    border-radius: 4px;
+    transition: 0.3s;
 }
 
-/* Efectos Hover por red */
-.social-btn.yt:hover { 
-    border-color: #ff0000; 
-    box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); 
-    background: rgba(255, 0, 0, 0.1);
-}
-
-.social-btn.as:hover { 
-    border-color: #13aff0; 
-    box-shadow: 0 0 15px rgba(19, 175, 240, 0.3); 
-    background: rgba(19, 175, 240, 0.1);
-}
-
-.social-btn.sf:hover { 
-    border-color: #1caad9; 
-    box-shadow: 0 0 15px rgba(28, 170, 217, 0.3); 
-    background: rgba(28, 170, 217, 0.1);
-}
+.yt:hover { border-color: #ff0000; box-shadow: 0 0 10px rgba(255,0,0,0.3); }
+.as:hover { border-color: #13aff0; box-shadow: 0 0 10px rgba(19,175,240,0.3); }
+.sf:hover { border-color: #1caad9; box-shadow: 0 0 10px rgba(28,170,217,0.3); }
 
 /* =========================================
-   5. PORTFOLIO GRID
+   3. PORTFOLIO GRID (EL FIX DE LAS IMÁGENES)
    ========================================= */
 .section-title {
     font-family: var(--font-tech);
     margin: 60px 0 30px;
-    font-size: 1.2rem;
-    color: #fff;
+    font-size: 1.1rem;
     border-left: 4px solid var(--neon-orange);
     padding-left: 15px;
 }
 
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas fijas */
     gap: 25px;
     padding-bottom: 80px;
 }
 
-/* Esto aplica a las tarjetas que genera tu JS */
+/* LA CLASE CARD DEBE TENER ALTURA CONTROLADA */
 .card {
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(20, 20, 20, 0.5);
     border: 1px solid var(--glass-border);
-    backdrop-filter: blur(10px);
     border-radius: 8px;
     overflow: hidden;
     transition: 0.4s;
+    height: 400px; /* ALTURA FIJA PARA QUE NO SE ESTIREN */
+    display: flex;
+    flex-direction: column;
 }
 
 .card:hover {
     border-color: var(--neon-orange);
     transform: translateY(-8px);
-    box-shadow: 0 10px 30px rgba(255, 69, 0, 0.2);
+}
+
+/* FIX CRÍTICO PARA LA IMAGEN */
+.card img, .card-img {
+    width: 100%;
+    height: 250px; /* Altura de la imagen controlada */
+    object-fit: cover; /* Evita que se estire feo */
+    display: block;
+    filter: brightness(0.9);
+}
+
+.card-body {
+    padding: 20px;
+    background: rgba(10, 10, 10, 0.8);
+    flex-grow: 1; /* Rellena el espacio restante */
+}
+
+.card-body h3 {
+    font-family: var(--font-tech);
+    font-size: 0.9rem;
+    color: var(--neon-orange);
+}
+
+/* RESPONSIVO */
+@media (max-width: 900px) {
+    .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+    .portfolio-grid { grid-template-columns: 1fr; }
 }
