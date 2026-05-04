@@ -8,7 +8,7 @@ const proyectos = [
     {
         titulo: "Patrulla Low Poly",
         desc: "Vehículo optimizado GameAsset.",
-        imagen: "https://cdnb.artstation.com/p/assets/images/images/098/709/995/large/artissst-blend-4.jpg?1777853229",
+        imagen: "https://cdnb.artstation.com/p/assets/images/images/098/712/973/large/renderforge-studio-5.jpg?1777868099",
         specs: "STYLE: LOW POLY"
     },
     {
