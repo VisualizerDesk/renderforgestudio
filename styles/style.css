@@ -1,6 +1,21 @@
-/* =========================
-   🔥 GLOW GLOBAL
-========================= */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+:root{
+--orange:#ff4500;
+}
+
+body{
+background:#050505;
+color:white;
+font-family:'Outfit',sans-serif;
+overflow-x:hidden;
+}
+
+/* 🔥 GLOW FOLLOW MOUSE */
 body::before{
 content:"";
 position:fixed;
@@ -10,63 +25,73 @@ pointer-events:none;
 z-index:0;
 }
 
-/* =========================
-   🎯 HERO ANIMADO
-========================= */
-.hero h1{
-animation:glowText 2s ease-in-out infinite alternate;
+/* NAVBAR */
+.navbar{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+padding:15px 40px;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
+z-index:100;
 }
 
-@keyframes glowText{
-0%{text-shadow:0 0 10px rgba(255,69,0,0.3);}
-100%{text-shadow:0 0 25px rgba(255,69,0,0.8);}
+.logo{
+font-family:'Orbitron';
+color:var(--orange);
 }
 
-/* =========================
-   🧩 CARDS ULTRA PRO
-========================= */
-.card{
-position:relative;
-overflow:hidden;
+.nav-links a{
+margin-left:20px;
+color:white;
+text-decoration:none;
+font-size:0.8rem;
 }
 
-.card::before{
-content:"";
-position:absolute;
-inset:0;
-background:linear-gradient(120deg, transparent, rgba(255,69,0,0.3), transparent);
-opacity:0;
-transition:0.5s;
+.nav-links a:hover{
+color:var(--orange);
 }
 
-.card:hover::before{
-opacity:1;
-animation:shine 1s linear;
-}
-
-@keyframes shine{
-0%{transform:translateX(-100%);}
-100%{transform:translateX(100%);}
-}
-
-/* =========================
-   🧠 PARALLAX SUAVE
-========================= */
+/* HERO */
 .hero{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
 background:radial-gradient(circle,#111,#000);
-background-size:200% 200%;
 animation:bgMove 10s infinite alternate;
 }
 
 @keyframes bgMove{
-0%{background-position:0% 50%;}
-100%{background-position:100% 50%;}
+0%{background-position:0%;}
+100%{background-position:100%;}
 }
 
-/* =========================
-   ⚡ BOTONES PRO
-========================= */
+.hero h1{
+font-family:'Orbitron';
+font-size:3rem;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+0%{text-shadow:0 0 10px rgba(255,69,0,0.3);}
+100%{text-shadow:0 0 25px rgba(255,69,0,0.8);}
+}
+
+.hero p{
+margin:10px 0;
+color:#aaa;
+}
+
 .buttons a{
+margin:10px;
+padding:10px 20px;
+border:1px solid var(--orange);
+color:white;
+text-decoration:none;
 position:relative;
 overflow:hidden;
 }
@@ -76,25 +101,133 @@ content:"";
 position:absolute;
 width:0;
 height:100%;
-top:0;
 left:0;
-background:#ff4500;
+top:0;
+background:var(--orange);
 z-index:-1;
-transition:0.4s;
+transition:0.3s;
 }
 
 .buttons a:hover::after{
 width:100%;
 }
 
-/* =========================
-   📩 CONTACT BUTTON GLOW
-========================= */
+/* PORTFOLIO */
+.portfolio-section{
+padding:80px 40px;
+}
+
+.portfolio-section h2{
+font-family:'Orbitron';
+margin-bottom:30px;
+border-left:4px solid var(--orange);
+padding-left:10px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:20px;
+}
+
+.card{
+background:#111;
+border:1px solid #222;
+border-radius:10px;
+overflow:hidden;
+cursor:pointer;
+transition:0.4s;
+position:relative;
+}
+
+.card:hover{
+transform:translateY(-10px);
+border-color:var(--orange);
+}
+
+.card::before{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(120deg, transparent, rgba(255,69,0,0.4), transparent);
+opacity:0;
+}
+
+.card:hover::before{
+opacity:1;
+animation:shine 1s;
+}
+
+@keyframes shine{
+0%{transform:translateX(-100%);}
+100%{transform:translateX(100%);}
+}
+
+.card img{
+width:100%;
+height:200px;
+object-fit:cover;
+}
+
+.card-body{
+padding:15px;
+}
+
+.card-body h3{
+font-family:'Orbitron';
+font-size:0.9rem;
+}
+
+.card-body p{
+font-size:0.8rem;
+color:#bbb;
+}
+
+/* CONTACT */
+.contact{
+text-align:center;
+padding:60px;
+}
+
 .contact a{
+display:inline-block;
+margin-top:10px;
+padding:12px 25px;
+border:1px solid var(--orange);
+text-decoration:none;
+color:white;
 box-shadow:0 0 10px rgba(255,69,0,0.3);
-transition:0.3s;
 }
 
 .contact a:hover{
+background:var(--orange);
 box-shadow:0 0 25px rgba(255,69,0,0.8);
+}
+
+/* MODAL */
+#modal{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.9);
+justify-content:center;
+align-items:center;
+z-index:200;
+}
+
+.modal-content{
+max-width:700px;
+text-align:center;
+}
+
+.modal-content img{
+width:100%;
+}
+
+.close{
+position:absolute;
+top:20px;
+right:40px;
+font-size:2rem;
+cursor:pointer;
 }
