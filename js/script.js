@@ -31,7 +31,9 @@ function cargarPortafolio() {
         card.style.transitionDelay = `${index * 0.1}s`;
         
         card.innerHTML = `
-            <img src="${proy.imagen}" alt="${proy.titulo}" loading="lazy">
+            <div class="card-image-container">
+                <img src="${proy.imagen}" alt="${proy.titulo}" loading="lazy">
+            </div>
             <div class="card-content">
                 <h3>${proy.titulo}</h3>
                 <p>${proy.desc}</p>
@@ -41,6 +43,7 @@ function cargarPortafolio() {
         container.appendChild(card);
     });
 
+    // Observador para animar la entrada de las cards
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
