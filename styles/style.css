@@ -1,145 +1,54 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Outfit:wght@300;400;600&display=swap');
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <title>RenderForge Studio | 3D Artist</title>
+    
+    <!-- Iconos y Fuentes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="icon" type="image/x-icon" href="Images/11.ico">
+</head>
+<body>
 
-:root {
-    --neon-orange: #ff4500;
-    --neon-glow: rgba(255, 69, 0, 0.6);
-    --glass-bg: rgba(15, 15, 15, 0.7);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --bg-black: #030303;
-    --font-tech: 'Orbitron', sans-serif;
-}
+    <header class="main-header">
+        <div class="overlay"></div>
+    </header>
 
-body {
-    background-color: var(--bg-black);
-    background-image: 
-        radial-gradient(circle at 20% 30%, rgba(255, 69, 0, 0.05) 0%, transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(255, 69, 0, 0.05) 0%, transparent 40%);
-    color: #fff;
-    font-family: 'Outfit', sans-serif;
-    margin: 0;
-}
+    <main class="container">
+        <section class="profile-card">
+            <div class="profile-info">
+                <h1>RENDERFORGE STUDIO</h1>
+                <p class="bio">Artista 3D de <strong>México</strong> especializado en modelado <strong>Hardsurface</strong>, entornos optimizados y props para videojuegos.</p>
+                
+                <div class="tags">
+                    <span>16 Años</span>
+                    <span>Blender Expert</span>
+                    <span>6 Años Exp</span>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://www.youtube.com/@RFS-blend" target="_blank" class="social-btn yt">
+                        <i class="fab fa-youtube"></i> YouTube
+                    </a>
+                    <a href="https://www.artstation.com/chnachoganzo7" target="_blank" class="social-btn as">
+                        <i class="fab fa-artstation"></i> ArtStation
+                    </a>
+                    <a href="https://sketchfab.com/20170116" target="_blank" class="social-btn sf">
+                        <i class="fab fa-sketchfab"></i> Sketchfab
+                    </a>
+                </div>
+            </div>
+        </section>
 
-/* 1. HEADER CON NEON GLOW */
-.main-header {
-    height: 400px;
-    background: linear-gradient(to bottom, transparent, var(--bg-black)), 
-                url('../Images/RenderForgeStudio.png') center/cover no-repeat;
-    border-bottom: 2px solid var(--neon-orange);
-    box-shadow: 0 0 20px var(--neon-glow);
-    position: relative;
-}
+        <h2 class="section-title">PROYECTOS DESTACADOS</h2>
+        <div id="portfolio" class="portfolio-grid"></div>
+    </main>
 
-/* 2. PROFILE CARD - EFECTO VIDRIO (Glassmorphism) */
-.profile-container {
-    max-width: 1100px;
-    margin: -100px auto 50px;
-    padding: 0 20px;
-}
-
-.profile-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(15px); /* ESTO DA EL EFECTO VIDRIO */
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid var(--glass-border);
-    border-left: 4px solid var(--neon-orange);
-    border-radius: 10px 40px 10px 10px;
-    padding: 45px;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.5), inset 0 0 15px rgba(255,255,255,0.05);
-}
-
-.profile-card h1 {
-    font-family: var(--font-tech);
-    color: #fff;
-    text-shadow: 0 0 10px var(--neon-glow), 0 0 20px var(--neon-glow);
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-    animation: flicker 3s infinite;
-}
-
-/* EFECTO NEON FLICKER */
-@keyframes flicker {
-    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
-    20%, 22%, 24%, 55% { opacity: 0.8; text-shadow: none; }
-}
-
-/* 3. TAGS NEON */
-.tag {
-    font-family: var(--font-tech);
-    font-size: 0.65rem;
-    padding: 6px 14px;
-    background: rgba(255, 69, 0, 0.1);
-    border: 1px solid var(--neon-orange);
-    color: var(--neon-orange);
-    box-shadow: 0 0 8px var(--neon-glow);
-    text-transform: uppercase;
-}
-
-/* 4. BOTONES TIPO HOLOGRAMA */
-.social-link {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--glass-border);
-    backdrop-filter: blur(5px);
-    color: #fff !important;
-    padding: 12px 25px;
-    font-family: var(--font-tech);
-    font-size: 0.7rem;
-    transition: all 0.4s ease;
-}
-
-.social-link:hover {
-    background: var(--neon-orange);
-    box-shadow: 0 0 20px var(--neon-orange);
-    color: #000 !important;
-    border-color: #fff;
-}
-
-/* 5. PORTAFOLIO - CARDS DE CRISTAL */
-#portfolio {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    max-width: 1100px;
-    margin: 0 auto 100px;
-}
-
-.card {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid var(--glass-border);
-    backdrop-filter: blur(10px);
-    border-radius: 5px;
-    transition: 0.5s;
-    overflow: hidden;
-}
-
-.card:hover {
-    border-color: var(--neon-orange);
-    box-shadow: 0 0 30px rgba(255, 69, 0, 0.3);
-    transform: translateY(-10px) scale(1.02);
-}
-
-.card-image-container {
-    height: 230px;
-    border-bottom: 1px solid var(--glass-border);
-}
-
-.card-image-container img {
-    width: 100%; height: 100%; object-fit: cover;
-    filter: brightness(0.8);
-    transition: 0.5s;
-}
-
-.card:hover img {
-    filter: brightness(1.1);
-}
-
-.card-content h3 {
-    font-family: var(--font-tech);
-    text-shadow: 0 0 5px var(--neon-glow);
-}
-
-.specs {
-    font-family: var(--font-tech);
-    font-size: 0.6rem;
-    color: var(--neon-orange);
-    opacity: 0.8;
-}
+    <script src="js/script.js"></script>
+</body>
+</html>
