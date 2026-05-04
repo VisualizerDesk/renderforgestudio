@@ -24,8 +24,6 @@ body {
 .main-header {
     width: 100%;
     height: 450px;
-    /* Si la imagen está en la misma carpeta que el HTML, usa 'RenderForgeStudio.png' */
-    /* Si está en una carpeta llamada Images, usa '../Images/RenderForgeStudio.png' */
     background-image: url('../Images/RenderForgeStudio.png'); 
     background-size: cover;
     background-position: center;
