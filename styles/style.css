@@ -1,54 +1,185 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="referrer" content="no-referrer">
-    <title>RenderForge Studio | 3D Artist</title>
-    
-    <!-- Iconos y Fuentes -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="styles/style.css">
-    <link rel="icon" type="image/x-icon" href="Images/11.ico">
-</head>
-<body>
+/* =========================================
+   1. RESET Y FUENTES
+   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Outfit:wght@300;400;600&display=swap');
 
-    <header class="main-header">
-        <div class="overlay"></div>
-    </header>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    <main class="container">
-        <section class="profile-card">
-            <div class="profile-info">
-                <h1>RENDERFORGE STUDIO</h1>
-                <p class="bio">Artista 3D de <strong>México</strong> especializado en modelado <strong>Hardsurface</strong>, entornos optimizados y props para videojuegos.</p>
-                
-                <div class="tags">
-                    <span>16 Años</span>
-                    <span>Blender Expert</span>
-                    <span>6 Años Exp</span>
-                </div>
-                
-                <div class="social-links">
-                    <a href="https://www.youtube.com/@RFS-blend" target="_blank" class="social-btn yt">
-                        <i class="fab fa-youtube"></i> YouTube
-                    </a>
-                    <a href="https://www.artstation.com/chnachoganzo7" target="_blank" class="social-btn as">
-                        <i class="fab fa-artstation"></i> ArtStation
-                    </a>
-                    <a href="https://sketchfab.com/20170116" target="_blank" class="social-btn sf">
-                        <i class="fab fa-sketchfab"></i> Sketchfab
-                    </a>
-                </div>
-            </div>
-        </section>
+:root {
+    --neon-orange: #ff4500;
+    --neon-glow: rgba(255, 69, 0, 0.6);
+    --glass-bg: rgba(15, 15, 15, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --bg-black: #050505;
+    --font-tech: 'Orbitron', sans-serif;
+    --font-main: 'Outfit', sans-serif;
+}
 
-        <h2 class="section-title">PROYECTOS DESTACADOS</h2>
-        <div id="portfolio" class="portfolio-grid"></div>
-    </main>
+body {
+    background-color: var(--bg-black);
+    color: #fff;
+    font-family: var(--font-main);
+    overflow-x: hidden;
+    /* Fondo con ligero brillo radial */
+    background-image: radial-gradient(circle at 50% -20%, #1a0a00 0%, var(--bg-black) 70%);
+}
 
-    <script src="js/script.js"></script>
-</body>
-</html>
+/* =========================================
+   2. HEADER (TU BANNER)
+   ========================================= */
+.main-header {
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(to bottom, transparent, var(--bg-black)), 
+                url('../Images/RenderForgeStudio.png') center/cover no-repeat;
+    border-bottom: 2px solid var(--neon-orange);
+    box-shadow: 0 0 30px var(--neon-glow);
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: repeating-linear-gradient(0deg, rgba(0,0,0,0.1) 0px, rgba(0,0,0,0.1) 1px, transparent 1px, transparent 2px);
+}
+
+/* =========================================
+   3. CONTENEDOR Y PROFILE CARD (VIDRIO)
+   ========================================= */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.profile-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-left: 5px solid var(--neon-orange);
+    border-radius: 10px 40px 10px 10px;
+    padding: 40px;
+    margin-top: -100px; /* Sube la card sobre el banner */
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+}
+
+.profile-card h1 {
+    font-family: var(--font-tech);
+    font-size: 2.5rem;
+    color: #fff;
+    text-shadow: 0 0 15px var(--neon-glow);
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+}
+
+.bio {
+    color: #ccc;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    max-width: 800px;
+}
+
+.bio strong {
+    color: var(--neon-orange);
+}
+
+/* TAGS (ESTILO INFOGRAFÍA) */
+.tags {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.tags span {
+    font-family: var(--font-tech);
+    font-size: 0.65rem;
+    color: var(--neon-orange);
+    border: 1px solid var(--neon-orange);
+    padding: 5px 12px;
+    background: rgba(255, 69, 0, 0.05);
+    text-transform: uppercase;
+}
+
+/* =========================================
+   4. BOTONES SOCIALES (NEÓN)
+   ========================================= */
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: 4px;
+    color: #fff !important;
+    text-decoration: none;
+    font-family: var(--font-tech);
+    font-size: 0.7rem;
+    transition: 0.3s all ease;
+}
+
+/* Efectos Hover por red */
+.social-btn.yt:hover { 
+    border-color: #ff0000; 
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); 
+    background: rgba(255, 0, 0, 0.1);
+}
+
+.social-btn.as:hover { 
+    border-color: #13aff0; 
+    box-shadow: 0 0 15px rgba(19, 175, 240, 0.3); 
+    background: rgba(19, 175, 240, 0.1);
+}
+
+.social-btn.sf:hover { 
+    border-color: #1caad9; 
+    box-shadow: 0 0 15px rgba(28, 170, 217, 0.3); 
+    background: rgba(28, 170, 217, 0.1);
+}
+
+/* =========================================
+   5. PORTFOLIO GRID
+   ========================================= */
+.section-title {
+    font-family: var(--font-tech);
+    margin: 60px 0 30px;
+    font-size: 1.2rem;
+    color: #fff;
+    border-left: 4px solid var(--neon-orange);
+    padding-left: 15px;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    padding-bottom: 80px;
+}
+
+/* Esto aplica a las tarjetas que genera tu JS */
+.card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: 0.4s;
+}
+
+.card:hover {
+    border-color: var(--neon-orange);
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(255, 69, 0, 0.2);
+}
