@@ -15,7 +15,7 @@ const proyectos = [
         titulo: "Portal Game Room",
         desc: "Cuarto realista en 3D inspirado en Portal.",
         imagen: "https://cdna.artstation.com/p/assets/images/images/098/452/908/large/artissst-blend-asdaf.jpg?1777089086",
-        specs: "Cycle"
+        specs: "RENDER: CYCLES"
     }
 ];
 
@@ -29,20 +29,19 @@ function cargarPortafolio() {
         const card = document.createElement('div');
         card.className = 'card';
         
-        // Estructura interna con el overlay de descripción
+        // CORRECCIÓN: Usamos 'card-body' y 'card-specs' para que el CSS funcione
         card.innerHTML = `
-            <div class="card-image-container">
-                <img src="${proy.imagen}" alt="${proy.titulo}">
-            </div>
-            <div class="card-content">
+            <img src="${proy.imagen}" alt="${proy.titulo}" class="card-img">
+            <div class="card-body">
                 <h3>${proy.titulo}</h3>
                 <p>${proy.desc}</p>
-                <div class="specs">${proy.specs}</div>
+                <div class="card-specs">
+                    <div class="spec-item">${proy.specs}</div>
+                </div>
             </div>
         `;
         container.appendChild(card);
     });
 }
 
-// Ejecutar cuando cargue el documento
 document.addEventListener('DOMContentLoaded', cargarPortafolio);
