@@ -25,14 +25,14 @@ function cargarPortafolio() {
 
     container.innerHTML = ''; 
 
-    proyectos.forEach((proy, index) => {
+    proyectos.forEach((proy) => {
         const card = document.createElement('div');
         card.className = 'card';
-        card.style.transitionDelay = `${index * 0.1}s`;
         
+        // Estructura interna con el overlay de descripción
         card.innerHTML = `
             <div class="card-image-container">
-                <img src="${proy.imagen}" alt="${proy.titulo}" loading="lazy">
+                <img src="${proy.imagen}" alt="${proy.titulo}">
             </div>
             <div class="card-content">
                 <h3>${proy.titulo}</h3>
@@ -42,17 +42,7 @@ function cargarPortafolio() {
         `;
         container.appendChild(card);
     });
-
-    // Observador para animar la entrada de las cards
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.card').forEach(c => observer.observe(c));
 }
 
+// Ejecutar cuando cargue el documento
 document.addEventListener('DOMContentLoaded', cargarPortafolio);
