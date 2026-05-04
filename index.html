@@ -3,21 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer"> <!-- Vital para que carguen tus fotos de ArtStation -->
     <title>RenderForge Studio | 3D Portfolio</title>
-    <!-- Fuentes Tech -->
+    
+    <!-- Fuentes optimizadas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <!-- Ruta corregida a la carpeta 'styles' -->
+    
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
 
-    <!-- Header con el Banner -->
     <header class="main-header">
         <div class="overlay"></div>
     </header>
 
     <main class="container">
-        <!-- Tarjeta de Perfil -->
         <section class="profile-card">
             <div class="profile-info">
                 <h1>RENDERFORGE STUDIO</h1>
@@ -25,15 +27,15 @@
                 <div class="tags">
                     <span>16 Años</span>
                     <span>Blender Expert</span>
+                    <span>Freelance</span>
                     <span>6 Años Exp</span>
                 </div>
             </div>
         </section>
 
-        <!-- Galería de Proyectos -->
         <h2 class="section-title">PROYECTOS DESTACADOS</h2>
         <div id="portfolio" class="portfolio-grid">
-            <div class="loading">Sincronizando base de datos...</div>
+            <!-- El JS inyectará el contenido aquí -->
         </div>
     </main>
 
@@ -41,7 +43,6 @@
         <p>&copy; 2026 RenderForge Studio - Todos los derechos reservados.</p>
     </footer>
 
-    <!-- Ruta corregida a la carpeta 'js' -->
     <script src="js/script.js"></script>
 </body>
 </html>
