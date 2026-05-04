@@ -1,16 +1,12 @@
 :root {
     --primary-orange: #ff6600;
     --dark-bg: #050505;
-    --card-bg: rgba(20, 20, 20, 0.9);
+    --card-bg: rgba(15, 15, 15, 0.95);
     --text-color: #f0f0f0;
-    --neon: 0 0 15px rgba(255, 102, 0, 0.3);
+    --neon-glow: 0 0 20px rgba(255, 102, 0, 0.4);
 }
 
-/* Scrollbar Personalizado */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: var(--dark-bg); }
-::-webkit-scrollbar-thumb { background: var(--primary-orange); border-radius: 10px; }
-
+/* Base */
 body {
     background-color: var(--dark-bg);
     color: var(--text-color);
@@ -19,8 +15,9 @@ body {
     overflow-x: hidden;
 }
 
+/* Header & Profile */
 .main-header {
-    height: 450px;
+    height: 400px;
     background: url('../Images/RenderForgeStudio.png') fixed center/cover;
     position: relative;
     border-bottom: 2px solid var(--primary-orange);
@@ -33,8 +30,8 @@ body {
 }
 
 .container {
-    max-width: 1200px;
-    margin: -60px auto 0;
+    max-width: 1100px;
+    margin: -80px auto 0;
     padding: 0 20px 100px;
     position: relative;
     z-index: 10;
@@ -44,100 +41,130 @@ body {
     background: var(--card-bg);
     padding: 40px;
     border-radius: 15px;
-    border-left: 8px solid var(--primary-orange);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-    margin-bottom: 60px;
+    border: 1px solid #222;
+    border-left: 10px solid var(--primary-orange);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
 }
 
 .profile-card h1 {
     font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    margin: 0 0 10px;
     color: var(--primary-orange);
-    font-size: 2.8rem;
-    margin: 0 0 15px 0;
+    text-shadow: var(--neon-glow);
 }
 
+/* Tags y Botones Sociales */
 .tags span {
     display: inline-block;
     border: 1px solid var(--primary-orange);
     color: var(--primary-orange);
     padding: 5px 15px;
-    margin: 5px;
+    margin-right: 10px;
     font-family: 'Orbitron', sans-serif;
     font-size: 0.8rem;
 }
 
+.social-links {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+}
+
+.social-btn {
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    color: #fff;
+    border: 1px solid #333;
+    padding: 10px 20px;
+    border-radius: 4px;
+    background: #111;
+    transition: 0.3s;
+}
+
+.social-btn:hover {
+    background: var(--primary-orange);
+    border-color: var(--primary-orange);
+    box-shadow: var(--neon-glow);
+    transform: translateY(-3px);
+}
+
+/* Portfolio Grid */
 .section-title {
     font-family: 'Orbitron', sans-serif;
     text-align: center;
-    letter-spacing: 4px;
-    margin-bottom: 40px;
+    margin: 60px 0 40px;
+    letter-spacing: 5px;
 }
 
-/* GRID Y CARDS */
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
 }
 
+/* Estilo de la Card con Overlay */
 .card {
-    background: #111;
-    border-radius: 8px;
-    border: 1px solid #222;
+    position: relative;
+    background: #000;
+    border-radius: 12px;
     overflow: hidden;
-    transition: 0.4s ease;
-    opacity: 0;
-    transform: translateY(20px);
+    height: 400px; /* Todas las cards del mismo tamaño */
+    cursor: pointer;
 }
 
-.card.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.card:hover {
-    border-color: var(--primary-orange);
-    box-shadow: var(--neon);
-}
-
-/* EFECTO DE IMAGEN PANORÁMICA */
 .card-image-container {
     width: 100%;
-    height: 250px; /* Tamaño igual para todas las cards */
-    overflow: hidden;
-    background: #000;
+    height: 100%;
 }
 
 .card img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Mantiene proporción */
-    object-position: top; /* Empieza arriba */
-    transition: object-position 1.5s ease-in-out, filter 0.5s ease;
-    filter: grayscale(40%);
-}
-
-.card:hover img {
-    object-position: bottom; /* Baja hasta el final del render */
-    filter: grayscale(0%);
+    object-fit: cover;
+    object-position: top;
+    transition: object-position 2s ease-in-out, filter 0.5s ease;
 }
 
 .card-content {
-    padding: 20px;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,1) 10%, rgba(255,102,0,0.1));
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 25px;
+    opacity: 0; /* Oculto inicialmente */
+    transition: 0.4s ease;
+}
+
+/* Hover Effects */
+.card:hover .card-content {
+    opacity: 1;
+}
+
+.card:hover img {
+    object-position: bottom; /* Desplaza la imagen para mostrar todo el render */
+    filter: blur(3px) brightness(0.6);
 }
 
 .card-content h3 {
     font-family: 'Orbitron', sans-serif;
     color: var(--primary-orange);
-    margin: 0 0 10px 0;
+    margin: 0 0 10px;
+}
+
+.card-content p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 0 0 15px;
 }
 
 .specs {
-    margin-top: 15px;
     font-family: 'Orbitron', sans-serif;
     font-size: 0.7rem;
-    color: #888;
-    border-top: 1px solid #222;
+    color: var(--primary-orange);
+    border-top: 1px solid #333;
     padding-top: 10px;
 }
