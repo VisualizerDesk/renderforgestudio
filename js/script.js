@@ -5,7 +5,7 @@
 
 // 1. CONFIGURACIÓN DEL PANEL (Cámbialo cuando tengas tu ID)
 const CONFIG = {
-    PROJECT_ID: 'foe69r3l', // Tu ID de Sanity
+    PROJECT_ID: 'b9u1w0kk', // Tu ID de Sanity
     DATASET: 'production',
     USE_MANUAL_DATA: false 
 };
